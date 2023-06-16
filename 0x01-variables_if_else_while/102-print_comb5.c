@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 /**
  * main - Entry point
@@ -8,34 +9,25 @@
 
 int main(void)
 {
-	int x;
-	int n;
 	int i;
 	int j;
 
-	for (x = 48; x <= 57; x++)
+	for (i = 0; i < 99; i++)
 	{
-		for (n = 48; n <= 56; n++)
+		for (j = i + 1; j <= 99; j++) 
 		{
-			for (i = 48; i <= 57; i++)
-			{
-				for (j = 48; j <= 57; j++)
-				{
-					if (i == 48 && n == 48 && x == 48 && j == 48)
-						continue;
-					putchar(x);
-					putchar(n);
-					putchar(' ');
-					putchar(i);
-					putchar(j);
-					if (x == 57 && n == 56 && i == 57 && j == 57)
-						continue;
-					putchar(',');
-					putchar(' ');
-				}
-			}
+			putchar(floor(i / 10) + 48);
+			putchar(i % 10 + 48);
+			putchar(' ');
+			putchar(floor(j / 10) + 48);
+			putchar(j % 10 + 48);
+			if(i >= 98 && j >= 99)
+				continue;
+			putchar(',');
+			putchar(' ');
 		}
 	}
+
 	putchar('\n');
 	return (0);
 }
