@@ -21,23 +21,15 @@ int main(void)
 			{
 				for (j = 48; j <= 57; j++)
 				{
+					if (i == 48 && n == 48 && x == 48 && j == 48)
+						continue;
 					putchar(x);
 					putchar(n);
 					putchar(' ');
 					putchar(i);
-
-					if (i == 48 && n == 48 && x == 48)
-					{
-						putchar(j + 1);
-					}
-					else
-					{
-						putchar(j);
-					}
-
+					putchar(j);
 					if (x == 57 && n == 56 && i == 57 && j == 57)
 						continue;
-
 					putchar(',');
 					putchar(' ');
 				}
