@@ -8,12 +8,15 @@
 
 int main(void)
 {
+	int n;
+	int i;
+	int j;
 
-	for (int n = 48; n <= 55; n++)
+	for (n = 48; n <= 55; n++)
 	{
-		for (int i = n + 1; i <= 56; i++)
+		for (i = n + 1; i <= 56; i++)
 		{
-			for (int j = i + 1; j <= 57; j++)
+			for (j = i + 1; j <= 57; j++)
 			{
 				putchar(n);
 				putchar(i);
