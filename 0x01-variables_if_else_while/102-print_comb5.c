@@ -21,6 +21,8 @@ int main(void)
 			{
 				for (j = 48; j <= 57; j++)
 				{
+					if(i == 48 && n == 48 && x == 48)
+						j++;
 					putchar(x);
 					putchar(n);
 					putchar(' ');
