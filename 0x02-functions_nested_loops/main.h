@@ -1,12 +1,11 @@
 #ifndef HEADER_FILE
 #define HEADER_FILE
-#include <stdio.h>
 
 int _islower(int c);
 int _isalpha(int c);
 int _abs(int);
 int _putchar(char c);
-void print_number(int n)
+void print_number(int n);
 int print_sign(int n);
 int print_last_digit(int);
 int add(int, int);

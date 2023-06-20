@@ -23,13 +23,13 @@ void print_to_98(int n)
 	while (n != 98)
 	{
 		print_number(n);
-		_putchar(',');
-		_putchar(' ');
+		putchar(',');
+		putchar(' ');
 		n += step;
 	}
-	_putchar('9');
-	_putchar('8');
-	_putchar('\n');
+	putchar('9');
+	putchar('8');
+	putchar('\n');
 }
 
 /**
@@ -38,7 +38,6 @@ void print_to_98(int n)
  *
  * @n: integer to be printed
  */
-
 void print_number(int n)
 {
 	if (n < 0)
