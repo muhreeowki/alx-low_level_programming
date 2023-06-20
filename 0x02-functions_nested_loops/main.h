@@ -24,7 +24,7 @@ void _printnum(int n);
  * @n: integer to be printed
  */
 
-void print_num(int n)
+void _printnum(int n)
 {
 	if (n < 0)
 	{
