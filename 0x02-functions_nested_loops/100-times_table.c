@@ -3,16 +3,10 @@
 #include "main.h"
 
 
-void print_times_table(int n);
-
-
-int main(void) 
-{
-	print_times_table(10);
-}
-
 /**
- * times_table - Prints the times table for base 10 numbers
+ * print_times_table - Prints the times table for n until n * n
+ *
+ * @n: Integer value for the times table to be printed
  */
 void print_times_table(int n)
 {
@@ -32,22 +26,23 @@ void print_times_table(int n)
 			product = y * x;
 			if (product >= 10)
 			{
-				putchar(floor(product / 10) + '0');
-				putchar(product % 10 + '0');
+				print_num(product);
 			}
 			else
-				putchar(product + '0');
+				_putchar(product + '0');
 
-			if (x != n - 1)
+			if (x != n)
 			{
-				putchar(',');
-				putchar(' ');
+				_putchar(',');
+				_putchar(' ');
 				if ((x + 1) * y < 10)
-					putchar(' ');
+					_putchar(' ');
+				if ((x + 1) * y < 100)
+					_putchar(' ');
 			}
 			x++;
 		}
-		putchar('\n');
+		_putchar('\n');
 		y++;
 	}
 

@@ -23,41 +23,11 @@ void print_to_98(int n)
 	while (n != 98)
 	{
 		print_num(n);
-		putchar(',');
-		putchar(' ');
+		_putchar(',');
+		_putchar(' ');
 		n += step;
 	}
-	putchar('9');
-	putchar('8');
-	putchar('\n');
+	_putchar('9');
+	_putchar('8');
+	_putchar('\n');
 }
-
-
-/**
- * print_num - Helper function to recursivly print the individual
- * digits of an integer n using only the putchar function.
- *
- * @n: integer to be printed
- */
-
-void print_num(int n)
-{
-	if (n < 0)
-	{
-		putchar('-');
-		n = -n;
-	}
-
-	if (n / 10)
-		print_num(n / 10);
-
-	putchar(n % 10 + '0');
-}
-
-
-
-
-
-
-
-
