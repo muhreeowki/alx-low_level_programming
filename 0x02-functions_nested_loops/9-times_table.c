@@ -21,22 +21,22 @@ void times_table(void)
 			product = y * x;
 			if (product >= 10)
 			{
-				putchar(floor(product / 10) + '0');
-				putchar(product % 10 + '0');
+				_putchar(floor(product / 10) + '0');
+				_putchar(product % 10 + '0');
 			}
 			else
-				putchar(product + '0');
+				_putchar(product + '0');
 
 			if (x != 9)
 			{
-				putchar(',');
-				putchar(' ');
+				_putchar(',');
+				_putchar(' ');
 				if ((x + 1) * y < 10)
-					putchar(' ');
+					_putchar(' ');
 			}
 			x++;
 		}
-		putchar('\n');
+		_putchar('\n');
 		y++;
 	}
 
