@@ -9,6 +9,7 @@ int print_sign(int n);
 int print_last_digit(int);
 int add(int, int);
 void fibonacci(int n);
+void fibonacci_2(void);
 void print_number(int n);
 void print_alphabet_x10(void);
 void print_alphabet(void);
