@@ -7,6 +7,8 @@
  * Return: Always 0
  */
 
+void print_long_number(unsigned long long int n);
+
 int main(void)
 {
 	fibonacci(50);
@@ -17,17 +19,17 @@ int main(void)
 
 void fibonacci(int n)
 {
-	int i;
-	int a;
-	int b;
-	int fib;
+	unsigned short int i;
+	unsigned long long int a;
+	unsigned long long int b;
+	unsigned long long int fib;
 
 	a = 1;
 	b = 1;
 
 	for(i = 2; i <= n + 1; i++ )
 	{
-		print_number(a);
+		print_long_number(a);
 		fib = a + b;
 		a = b;
 		b = fib;
@@ -47,7 +49,7 @@ void fibonacci(int n)
  * @n: integer to be printed
  */
 
-void print_number(int n)
+void print_long_number(unsigned long long int n)
 {
 	if (n < 0)
 	{
@@ -56,7 +58,7 @@ void print_number(int n)
 	}
 
 	if (n / 10)
-		print_number(n / 10);
+		print_long_number(n / 10);
 
 	putchar(n % 10 + '0');
 }
