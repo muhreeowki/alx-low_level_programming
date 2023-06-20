@@ -10,7 +10,7 @@ void print_long_number(unsigned long int n);
  */
 int main(void)
 {
-	fibonacci(10);
+	fibonacci(98);
 	putchar('\n');
 	return (0);
 }
