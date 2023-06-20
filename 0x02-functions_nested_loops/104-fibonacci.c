@@ -3,6 +3,7 @@
 
 void print_long_number(unsigned long int n);
 
+
 /**
  * main - Entry point
  *
@@ -14,7 +15,6 @@ int main(void)
 	putchar('\n');
 	return (0);
 }
-
 
 
 /**
@@ -34,7 +34,7 @@ void fibonacci(int n)
 
 	for (i = 2; i <= n + 1; i++)
 	{
-		print_long_number(a);
+		printf("%d", a);
 		fib = a + b;
 		a = b;
 		b = fib;
@@ -52,7 +52,6 @@ void fibonacci(int n)
  * digits of a long long integer n using only the putchar function.
  *
  * @n: integer to be printed
- */
 
 void print_long_number(unsigned long int n)
 {
@@ -62,3 +61,4 @@ void print_long_number(unsigned long int n)
 	putchar(n % 10 + '0');
 }
 
+*/
