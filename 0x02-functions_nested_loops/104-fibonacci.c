@@ -34,7 +34,7 @@ void fibonacci(int n)
 
 	for (i = 2; i <= n + 1; i++)
 	{
-		printf("%d", a);
+		printf("%li", a);
 		fib = a + b;
 		a = b;
 		b = fib;
