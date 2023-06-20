@@ -15,13 +15,12 @@ int main(void)
 }
 
 
-int fibonacci(int n)
+void fibonacci(int n)
 {
 	int i;
 	int a;
 	int b;
 	int fib;
-
 
 	a = 1;
 	b = 1;
