@@ -1,7 +1,5 @@
 #include <stdio.h>
-
-/* Function prototypes */
-void print_alphabet_x10(void);
+#include "main.h"
 
 
 /**

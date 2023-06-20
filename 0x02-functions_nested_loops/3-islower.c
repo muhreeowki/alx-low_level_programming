@@ -1,7 +1,5 @@
 #include <stdio.h>
-
-/* Function prototype */
-int _islower(int c);
+#include "main.h"
 
 /**
  * main - Entry point

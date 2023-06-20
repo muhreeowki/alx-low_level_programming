@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
-/* Function prototype */
-int add(int, int);
+#include "main.h"
 
 /**
  * main - Entry point

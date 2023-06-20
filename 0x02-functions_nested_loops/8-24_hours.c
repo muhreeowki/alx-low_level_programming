@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
-/* Function prototype */
-void jack_bauer(void);
+#include "main.h"
 
 /**
  * main - Entry point

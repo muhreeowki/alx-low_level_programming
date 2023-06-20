@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "main.h"
 
 /* Function prototype */
 int print_sign(int n);

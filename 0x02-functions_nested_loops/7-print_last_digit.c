@@ -1,7 +1,5 @@
 #include <stdio.h>
-
-/* Function prototype */
-int print_last_digit(int);
+#include "main.h"
 
 /**
  * main - Entry point

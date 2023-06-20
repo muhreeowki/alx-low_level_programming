@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-
-/* Function prototype */
-void times_table(void);
+#include "main.h"
 
 /**
  * main - Entry point

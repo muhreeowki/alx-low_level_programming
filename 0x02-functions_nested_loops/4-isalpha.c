@@ -1,7 +1,6 @@
 #include <stdio.h>
+#include "main.h"
 
-/* Function prototype */
-int _isalpha(int c);
 
 /**
  * main - Entry point

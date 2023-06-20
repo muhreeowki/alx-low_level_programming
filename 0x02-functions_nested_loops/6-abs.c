@@ -1,7 +1,5 @@
 #include <stdio.h>
-
-/* Function prototype */
-int _abs(int);
+#include "main.h"
 
 /**
  * main - Entry point
