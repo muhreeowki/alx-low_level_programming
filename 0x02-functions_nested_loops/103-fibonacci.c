@@ -19,8 +19,6 @@ int main(void)
 
 /**
  * fibonacci_2 - Prints the first n values of the fibonacci sequence
- *
- * @n: Number of fibonacci numbers to print
  */
 void fibonacci_2(void)
 {
