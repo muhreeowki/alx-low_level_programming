@@ -2,12 +2,6 @@
 #include <math.h>
 #include "main.h"
 
-int main(void)
-{
-	print_times_table(10);
-	return (0);
-}
-
 /**
  * print_times_table - Prints the times table for n until n * n
  *
