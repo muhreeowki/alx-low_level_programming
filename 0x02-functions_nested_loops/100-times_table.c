@@ -26,7 +26,7 @@ void print_times_table(int n)
 			product = y * x;
 			if (product >= 10)
 			{
-				print_num(product);
+				_printnum(product);
 			}
 			else
 				_putchar(product + '0');
