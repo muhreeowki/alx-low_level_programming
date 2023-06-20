@@ -40,7 +40,7 @@ void times_table(void)
 			else
 				putchar(product + '0');
 
-			if(x != 9)
+			if (x != 9)
 			{
 				putchar(',');
 				putchar(' ');
