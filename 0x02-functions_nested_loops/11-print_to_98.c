@@ -2,17 +2,6 @@
 #include <stdlib.h>
 #include "main.h"
 
-/**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	print_to_98(120);
-	return (0);
-}
-
 
 /**
  * print_to_98 - Prints all natural numbers from n to 98 in order.

@@ -1,16 +1,6 @@
 #include <stdio.h>
 #include "main.h"
 
-/**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	return (0);
-}
-
 
 /**
  * _abs - computes the absolute value of a number.

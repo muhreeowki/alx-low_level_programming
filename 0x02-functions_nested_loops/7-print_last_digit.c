@@ -1,17 +1,6 @@
 #include <stdio.h>
 #include "main.h"
 
-/**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	print_last_digit(132);
-	return (0);
-}
-
 
 /**
  * print_last_digit - computes the absolute value of a number.

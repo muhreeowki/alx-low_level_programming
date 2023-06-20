@@ -2,17 +2,6 @@
 #include <math.h>
 #include "main.h"
 
-/**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	times_table();
-	return (0);
-}
-
 
 /**
  * times_table - Prints the times table for base 10 numbers

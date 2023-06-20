@@ -2,17 +2,6 @@
 #include "main.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	return (0);
-}
-
-
-/**
  * _islower - Checks if a char is lowercase or not
  *
  * @c: ASCII value of the char

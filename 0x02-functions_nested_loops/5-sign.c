@@ -1,20 +1,6 @@
 #include <stdio.h>
 #include "main.h"
 
-/* Function prototype */
-int print_sign(int n);
-
-/**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	return (0);
-}
-
-
 /**
  * print_sign - returns the sign of a number.
  *

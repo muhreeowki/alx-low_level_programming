@@ -3,17 +3,6 @@
 
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	return (0);
-}
-
-
-/**
  * _isalpha - Checks if a char is alphabetical or not
  *
  * @c: ASCII value of the char

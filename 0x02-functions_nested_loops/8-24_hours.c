@@ -3,18 +3,6 @@
 #include "main.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0 (success)
- */
-int main(void)
-{
-	jack_bauer();
-	return (0);
-}
-
-
-/**
  * jack_bauer - Prints every minute of a day
  */
 void jack_bauer(void)
