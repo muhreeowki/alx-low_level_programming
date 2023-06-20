@@ -2,6 +2,11 @@
 #include <math.h>
 #include "main.h"
 
+int main(void)
+{
+	print_times_table(10);
+	return (0);
+}
 
 /**
  * print_times_table - Prints the times table for n until n * n
@@ -15,7 +20,7 @@ void print_times_table(int n)
 	int product;
 
 	if(n < 0 || n > 15)
-		n = 0;
+		return;
 
 	y = 0;
 	while (y <= n)
@@ -29,20 +34,20 @@ void print_times_table(int n)
 				print_number(product);
 			}
 			else
-				_putchar(product + '0');
+				putchar(product + '0');
 
 			if (x != n)
 			{
-				_putchar(',');
-				_putchar(' ');
+				putchar(',');
+				putchar(' ');
 				if ((x + 1) * y < 10)
-					_putchar(' ');
+					putchar(' ');
 				if ((x + 1) * y < 100)
-					_putchar(' ');
+					putchar(' ');
 			}
 			x++;
 		}
-		_putchar('\n');
+		putchar('\n');
 		y++;
 	}
 
