@@ -24,6 +24,7 @@ int main(void)
 	}
 	print_number(sum);
 	putchar('\n');
+	return (0);
 }
 
 /**
