@@ -9,10 +9,7 @@
 
 int main(void)
 {
-	int n;
-
-	scanf("%d", &n);
-	fibonacci(n);
+	fibonacci(50);
 	putchar('\n');
 	return (0);
 }
