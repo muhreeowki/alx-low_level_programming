@@ -10,7 +10,7 @@ void print_long_number(unsigned long int n);
  */
 int main(void)
 {
-	fibonacci(50);
+	fibonacci_2();
 	putchar('\n');
 	return (0);
 }
@@ -22,7 +22,7 @@ int main(void)
  *
  * @n: Number of fibonacci numbers to print
  */
-void fibonacci(int n)
+void fibonacci_2(void)
 {
 	unsigned long int a;
 	unsigned long int b;
