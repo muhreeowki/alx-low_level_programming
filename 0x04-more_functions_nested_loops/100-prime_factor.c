@@ -12,25 +12,40 @@ int main(void)
 	unsigned long n;
 	unsigned long largest;
 	unsigned long i;
-	
+	unsigned long j;
+	int prime;
+
 	n = 612852475143;
 	largest = 2;
 
-	/* Divide n by 2 until it cannot be divided evenly into 2 */
-	while(n % 2 != 0)
+	for (i = 1; i <= n; i++)
 	{
-		n /= 2;
-	}
-
-	/* divide n by */
-	for (i = 3; i <= sqrt(n); i += 2)
-	{
-		while (n % i == 0)
+		/* Find a factor */
+		if(n % i == 0)
 		{
-			if(i > largest)
-				largest = i;
-			n /= i;
+			prime = 0;
+
+			/* Check if the factor is prime. */
+			for(j = 2; j < 9; j++)
+			{
+				if(i % j == 0)
+				{
+					prime = 1;
+					break;
+				}
+			}
+
+			/* If it is prime, compare it to the largest. */
+			if(prime == 0)
+			{
+				printf("%ld", i);
+				if(i > largest)
+				{
+					largest = i;
+				}
+			}
 		}
+
 	}
 
 	printf("%ld\n", largest);
