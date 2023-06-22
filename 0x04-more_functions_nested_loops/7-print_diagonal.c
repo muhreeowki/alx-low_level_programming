@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_line - prints n number of underscores
+ * print_diagonal - prints n number of '\'
  *
  * @n: number of underscores to print
  */
@@ -11,7 +11,13 @@ void print_diagonal(int n)
 	int i;
 	int j;
 
-	for (i = 0; i < n; i++)
+	if (n <= 0)
+	{
+		putchar('\n');
+		return;
+	}
+
+	for (i = n; i > 0; i--)
 	{
 		for (j = i - 1; j < n; j++)
 		{
@@ -21,5 +27,4 @@ void print_diagonal(int n)
 		putchar('\\');
 		putchar('\n');
 	}
-		putchar('\n');
 }
