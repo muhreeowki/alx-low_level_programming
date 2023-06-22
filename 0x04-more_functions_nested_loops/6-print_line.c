@@ -6,7 +6,7 @@
  * @n: number of underscores to print
  */
 
-void print_line(int n);
+void print_line(int n)
 {
 	int i;
 
