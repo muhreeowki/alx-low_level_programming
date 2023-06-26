@@ -9,12 +9,18 @@ void puts_half(char *str)
 {
 
 	int length;
+	int half;
 	int i;
 
-	i = 0;
-	length = _strlen(str);
+	length = _strlen(str) + 1;
+	half = floor(length / 2);
 
-	for (i = ceil(length / 2); i < length; i++)
+	printf("Length of string: %d\n", length);
+	printf("Half of length string: %d\n", half);
+	printf("Char at mid of string: %c\n", *(str + half));
+
+
+	for (i = half; i < length; i++)
 	{
 		putchar(*(str + i));
 	}
