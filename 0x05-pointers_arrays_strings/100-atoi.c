@@ -13,34 +13,46 @@ int _atoi(char *s)
 	int i;
 	int j;
 	int num;
-	int value;
+	unsigned int value;
+	int totalnums;
+	int test_int;
 
 	value = 0;
+	totalnums = 0;
 	length = _strlen(s);
-
+	test_int = 1;
 
 	for (i = 0; i < length; i++)
 	{
 		if (*(s + i) >= 48 && *(s + i) <= 57)
 		{
-			j = i;
-			while (*(s + j) >= 48 && *(s + j) <= 57)
+			while (*(s + i) >= 48 && *(s + i) <= 57)
 			{
-				num = *(s + j);
+				totalnums++;
+				num = *(s + i);
 				value = value * 10 + (num - 48);
-				j++;
+				i++;
 			}
 			break;
 		}
 	}
 
-	for (i = 0; i < j; i++)
+	if (totalnums < 1)
+		return (0);
+
+	if (value != 0)
 	{
-		if (*(s + i) == '-')
-			value = -value;
-		if (*(s + i) == '+')
-			value = +value;
+		for (j = 0; j < i; j++)
+		{
+			if (*(s + j) == '-')
+				test_int = -test_int;
+			if (*(s + j) == '+')
+				test_int = +test_int;
+		}
 	}
+
+	if (test_int == -1)
+		return (-value);
 
 	return (value);
 }
