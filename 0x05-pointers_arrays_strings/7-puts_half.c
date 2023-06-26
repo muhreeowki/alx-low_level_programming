@@ -1,0 +1,46 @@
+#include "main.h"
+
+/**
+ * puts_half - prints second half of a string to stdout
+ *
+ * @str: Address of the string to be printed
+ */
+void puts_half(char *str)
+{
+
+	int length;
+	int i;
+
+	i = 0;
+	length = _strlen(str);
+
+	for (i = length / 2; i < length; i++)
+	{
+		putchar(*(str + i));
+	}
+	putchar('\n');
+}
+
+/**
+ * _strlen - Returns the length of a string
+ *
+ * @s: Address of the first char in the string
+ *
+ * Return: the length of the string
+ */
+int _strlen(char *s)
+{
+	char c;
+	int i;
+
+	i = 0;
+	c = *s;
+
+	while (c != '\0')
+	{
+		i++;
+		c = *(s + i);
+	}
+
+	return (i);
+}
