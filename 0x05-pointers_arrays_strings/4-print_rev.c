@@ -21,6 +21,7 @@ void print_rev(char *s)
 	}
 
 	/* Set c to the last char */
+	i--;
 	c = *(s + i);
 
 	/* Print the string in reverse */
