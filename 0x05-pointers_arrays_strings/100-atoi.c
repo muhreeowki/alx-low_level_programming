@@ -14,11 +14,9 @@ int _atoi(char *s)
 	int j;
 	int num;
 	unsigned int value;
-	int totalnums;
 	int test_int;
 
 	value = 0;
-	totalnums = 0;
 	length = _strlen(s);
 	test_int = 1;
 
@@ -28,7 +26,6 @@ int _atoi(char *s)
 		{
 			while (*(s + i) >= 48 && *(s + i) <= 57)
 			{
-				totalnums++;
 				num = *(s + i);
 				value = value * 10 + (num - 48);
 				i++;
@@ -36,10 +33,8 @@ int _atoi(char *s)
 			break;
 		}
 	}
-
-	if (totalnums < 1)
+	if (value == 0)
 		return (0);
-
 	if (value != 0)
 	{
 		for (j = 0; j < i; j++)
@@ -50,10 +45,8 @@ int _atoi(char *s)
 				test_int = +test_int;
 		}
 	}
-
 	if (test_int == -1)
 		return (-value);
-
 	return (value);
 }
 
