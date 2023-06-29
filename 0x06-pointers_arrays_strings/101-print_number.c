@@ -1,11 +1,9 @@
 #include "main.h"
 
 /**
- * print_number - encodes a string into rot13 format
+ * print_number - prints out a number to stdout
  *
- * @s: Pointer to the string
- *
- * Return: Pointer to the string
+ * @n: number
  */
 
 void print_number(int n)
