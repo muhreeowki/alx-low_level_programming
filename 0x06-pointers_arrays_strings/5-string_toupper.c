@@ -5,6 +5,8 @@
  * to uppercase
  *
  * @s: Pointer to the string
+ *
+ * Return: Pointer to the string
  */
 
 char *string_toupper(char *s)
