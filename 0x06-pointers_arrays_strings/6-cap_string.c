@@ -11,9 +11,9 @@
 char *cap_string(char *s)
 {
 	int i, j, n;
-	int seperators[] = {9, 10, 11, 12, 32, 33, 34, 40, 41, 44, 46, 59, 63, 123, 125};
+	int seperators[] = {9, 10, 11, 32, 33, 34, 40, 41, 44, 46, 59, 63, 123, 125};
 
-	n = 15; /* number of seperators */
+	n = 14; /* number of seperators */
 	i = 0;
 
 	while (*(s + i) != '\0')
