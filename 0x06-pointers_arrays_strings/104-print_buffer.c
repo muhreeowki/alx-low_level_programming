@@ -1,6 +1,39 @@
 #include "main.h"
 
-void print_line(char *b, int i);
+/**
+ * print_line - prints a line from the buffer
+ *
+ * @b: Pointer to the buffer
+ * @line: line to print from the buffer
+ * @num_bytes: Number of bytes to print from the buffer
+ */
+
+void print_line(char *b, int line, int num_bytes)
+{
+	int j;
+
+	/* Hex values */
+	for (j = 0; j < 10; j++)
+	{
+		if (j <= num_bytes)
+			printf("%02x", (line * 10) + j);
+
+		else
+			printf("  ");
+
+		if (j % 2 == 0)
+			putchar(' ');
+	}
+
+	for (j = 0; j <= num_bytes; j++)
+	{
+		if (b[line * 10 + j] >= 32 && b[line * 10 + j] <= 126)
+			putchar(b[line * 10 + j]);
+		else
+			putchar('.');
+	}
+}
+
 
 /**
  * print_buffer - prints a buffer
@@ -12,58 +45,18 @@ void print_buffer(char *b, int size)
 {
 	int i;
 
-	i = 0;
-	while (i < size)
+	for (i = 0; i <= (size - 1) / 10 && size; i++)
 	{
-		if (i % 10 == 0 || i < (size - 10))
-			print_line(b, i);
-
-		else if (i % 2 == 0)
-			printf(" ");
-
-		if (*(b + i) == '\0')
-			printf("00");
-
-		else if (*(b + i) > 0 && *(b + i) < 16)
-			printf("%x0", *(b + i));
-
-		else
-			printf("%x", *(b + i));
-
-		i++;
-	}
-	putchar('\n');
-}
-
-/**
- * print_line - prints a line from the buffer
- *
- * @b: Pointer to the buffer
- * @i: number to print from
- */
-
-void print_line(char *b, int i)
-{
-	int j;
-
-	if (i != 0)
-	{
-		putchar(' ');
-		for (j = i - 10; j < i; j++)
+		printf("%08x: ", i * 10);
+		if ( i < size)
 		{
-			if (*(b + j) >= 32 && *(b + j) <= 126)
-			{
-				putchar(*(b + j));
-			}
-
-			else
-			{
-				putchar('.');
-			}
+			print_line(b, i, 9);
 		}
 
+		else
+		{
+			print_line(b, i, (size % 10) - 1);
+		}
 		putchar('\n');
 	}
-
-	printf("%08x: ", i);
 }
