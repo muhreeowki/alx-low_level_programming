@@ -12,7 +12,7 @@ void print_number(int n)
 	/* Handle negative numbers */
 	if (n < 0)
 	{
-		putchar('-');
+		_putchar('-');
 		n = -n;
 	}
 
@@ -20,5 +20,6 @@ void print_number(int n)
 	{
 		print_number(n / 10);
 	}
-	putchar(n % 10 + '0');
+
+	_putchar((n % 10) + 48);
 }
