@@ -1,5 +1,7 @@
 #include "main.h"
 
+void print_line(char *b, int i);
+
 /**
  * print_buffer - prints a buffer
  *
@@ -9,30 +11,12 @@
 void print_buffer(char *b, int size)
 {
 	int i;
-	int j;
 
 	i = 0;
 	while (i < size)
 	{
 		if (i % 10 == 0)
-		{
-			if (i != 0)
-			{
-				putchar(' ');
-
-				for (j = i - 10; j < i; j++)
-				{
-					if (*(b + j) >= 33 && *(b + j) <= 126)
-						putchar(*(b + j));
-					else
-						putchar('.');
-				}
-
-				putchar('\n');
-			}
-
-			printf("%p: ", (b + i));
-		}
+			print_line(b, i);
 
 		else if (i % 2 == 0)
 			printf(" ");
@@ -48,4 +32,37 @@ void print_buffer(char *b, int size)
 		i++;
 	}
 	putchar('\n');
+}
+
+/**
+ * print_line - prints a line from the buffer
+ *
+ * @b: Pointer to the buffer
+ * @i: number to print from
+ */
+
+void print_line(char *b, int i)
+{
+	int j;
+
+	if (i != 0)
+	{
+		putchar(' ');
+		for (j = i - 10; j < i; j++)
+		{
+			if (*(b + j) >= 33 && *(b + j) <= 126)
+			{
+				putchar(*(b + j));
+			}
+
+			else
+			{
+				putchar('.');
+			}
+		}
+
+		putchar('\n');
+	}
+
+	printf("%08x: ", i);
 }
