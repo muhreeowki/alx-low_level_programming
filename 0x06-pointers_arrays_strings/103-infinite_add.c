@@ -25,8 +25,10 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	carry = 0;
 
 	/* Find the length of n1 and n2 */
-	for (i = 0; *(n1 + i) != '\0'; i++);
-	for (j = 0; *(n2 + j) != '\0'; j++);
+	for (i = 0; *(n1 + i) != '\0'; i++)
+		;
+	for (j = 0; *(n2 + j) != '\0'; j++)
+		;
 
 	i--;
 	j--;
@@ -66,8 +68,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
  * reverse - reverses an array or string
  *
  * @a: Pointer to the array
- * @n: Number of elements in the array
  */
+
 void reverse(char *a)
 {
 	int mid, i, temp, len;
