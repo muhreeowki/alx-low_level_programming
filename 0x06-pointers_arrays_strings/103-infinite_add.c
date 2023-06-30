@@ -1,4 +1,7 @@
 #include "main.h"
+#include <stdio.h>
+
+void reverse(char *a);
 
 /**
  * infinite_add - Adds two numbers
@@ -13,54 +16,77 @@
 
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, carry, num1, num2, sum, index;
+	int i, j, carry, num1, num2, sum, r_index;
 
 	num1 = 0;
 	num2 = 0;
 	sum = 0;
-	index = 0;
+	r_index = 0;
 	carry = 0;
-	
 
-	for (i = 0; n1[i] != '\0'; i++);
-	for (j = 0; n2[j] != '\0'; j++);
-	
+	/* Find the length of n1 and n2 */
+	for (i = 0; *(n1 + i) != '\0'; i++);
+	for (j = 0; *(n2 + j) != '\0'; j++);
+
 	i--;
 	j--;
 
-	while ((i > 0 || j > 0) && (i < size_r || j < size_r))
+	if (i >= size_r || j >= size_r)
+		return (0);
+
+	while (i >= 0 || j >= 0 || carry == 1)
 	{
-		num1 = i > 0 ? n1[i] - '0' : 0;
-		num2 = j > 0 ? n2[j] - '0' : 0;
+		num1 = i >= 0 ? *(n1 + i) - '0' : 0;
+		num2 = j >= 0 ? *(n2 + j) - '0' : 0;
 
 		sum = num1 + num2 + carry;
-		carry = sum / 10;
-		*(r + index) = sum % 10;
 
+		carry = sum >= 10 ? 1 : 0;
+
+		if (r_index >= (size_r - 1))
+			return (0);
+
+		*(r + r_index) = (sum % 10) + '0';
+
+		r_index++;
 		i--;
 		j--;
-		index++;
 	}
+
+	if (r_index == size_r)
+		return (0);
+
+	*(r + r_index) = '\0';
+	reverse(r);
 
 	return (r);
 }
 
 /**
- * reverse_array - reverses an array of intergers
+ * reverse - reverses an array or string
  *
  * @a: Pointer to the array
  * @n: Number of elements in the array
  */
-void reverse_array(int *a, int n)
+void reverse(char *a)
 {
-	int mid, i, temp;
+	int mid, i, temp, len;
 
-	mid = n / 2;
+	len = 0;
+
+	while (*(a + len) != '\0')
+		len++;
+
+	len--;
+
+	mid = len / 2;
 
 	for (i = 0; i < mid; i++)
 	{
-		temp = a[i];
-		a[i] = a[n - i - 1];
-		a[n - i - 1] = temp;
+		temp = *(a + i);
+		*(a + i) = *(a + (len - i));
+		*(a + (len - i)) = temp;
 	}
+
+	*(a + (len + 1)) = '\0';
 }
