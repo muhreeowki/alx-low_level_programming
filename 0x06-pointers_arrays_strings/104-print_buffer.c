@@ -16,12 +16,11 @@ void print_line(char *b, int line, int num_bytes)
 	for (j = 0; j < 10; j++)
 	{
 		if (j <= num_bytes)
-			printf("%02x", (line * 10) + j);
-
+			printf("%02x", b[line * 10 + j]);
 		else
 			printf("  ");
 
-		if (j % 2 == 0)
+		if (j % 2)
 			putchar(' ');
 	}
 
@@ -48,15 +47,16 @@ void print_buffer(char *b, int size)
 	for (i = 0; i <= (size - 1) / 10 && size; i++)
 	{
 		printf("%08x: ", i * 10);
-		if ( i < size)
-		{
+
+		if (i < size / 10)
 			print_line(b, i, 9);
-		}
 
 		else
-		{
-			print_line(b, i, (size % 10) - 1);
-		}
+			print_line(b, i, size % 10 - 1);
+
 		putchar('\n');
 	}
+
+	if (size == 0)
+		putchar('\n');
 }
