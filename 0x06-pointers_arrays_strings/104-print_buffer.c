@@ -15,7 +15,7 @@ void print_buffer(char *b, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (i % 10 == 0)
+		if (i % 10 == 0 || i < (size - 10))
 			print_line(b, i);
 
 		else if (i % 2 == 0)
@@ -29,6 +29,7 @@ void print_buffer(char *b, int size)
 
 		else
 			printf("%x", *(b + i));
+
 		i++;
 	}
 	putchar('\n');
@@ -50,7 +51,7 @@ void print_line(char *b, int i)
 		putchar(' ');
 		for (j = i - 10; j < i; j++)
 		{
-			if (*(b + j) >= 33 && *(b + j) <= 126)
+			if (*(b + j) >= 32 && *(b + j) <= 126)
 			{
 				putchar(*(b + j));
 			}
