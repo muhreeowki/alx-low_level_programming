@@ -12,7 +12,6 @@ void print_buffer(char *b, int size)
 	int j;
 
 	i = 0;
-
 	while (i < size)
 	{
 		if (i % 10 == 0)
@@ -25,7 +24,7 @@ void print_buffer(char *b, int size)
 				{
 					if (*(b + j) >= 33 && *(b + j) <= 126)
 						putchar(*(b + j));
-					else 
+					else
 						putchar('.');
 				}
 
@@ -34,27 +33,19 @@ void print_buffer(char *b, int size)
 
 			printf("%p: ", (b + i));
 		}
-		else if (i % 2 == 0)
-		{
-			printf(" ");
-		}
 
+		else if (i % 2 == 0)
+			printf(" ");
 
 		if (*(b + i) == '\0')
-		{
 			printf("00");
-		}
-		else if (*(b + i) > 0 && *(b + i) < 16)
-		{
-			printf("%x0", *(b + i));
-		}
-		else 
-		{
-			printf("%x", *(b + i));
-		}
 
+		else if (*(b + i) > 0 && *(b + i) < 16)
+			printf("%x0", *(b + i));
+
+		else
+			printf("%x", *(b + i));
 		i++;
 	}
-
 	putchar('\n');
 }
