@@ -1,5 +1,5 @@
 #include "main.h"
-#include <limits.h>
+#include <stdio.h>
 
 /**
  * main - check the code
@@ -8,27 +8,10 @@
  */
 int main(void)
 {
-    print_number(98);
-    _putchar('\n');
-    print_number(402);
-    _putchar('\n');
-    print_number(1024);
-    _putchar('\n');
-    print_number(0);
-    _putchar('\n');
-    print_number(-98);
-    _putchar('\n');
-    print_number(3);
-    _putchar('\n');
-    print_number(10);
-    _putchar('\n');
-    print_number(-99);
-    _putchar('\n');
-    print_number(-4096);
-    _putchar('\n');
-    print_number(INT_MIN);
-    _putchar('\n');
-    print_number(INT_MAX);
-    _putchar('\n');
+    char buffer[] = "This is a string!\0And this is the rest of the #buffer :)\1\2\3\4\5\6\7#cisfun\n\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x20\x21\x34\x56#pointersarefun #infernumisfun\n";
+
+    printf("%s\n", buffer);
+    printf("---------------------------------\n");
+    print_buffer(buffer, sizeof(buffer));
     return (0);
 }
