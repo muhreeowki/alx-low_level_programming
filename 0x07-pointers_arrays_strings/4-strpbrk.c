@@ -3,13 +3,13 @@
 
 
 /**
- * _strspn - locates the first occurrence in the string s
- * of any of the bytes in the string accept
+ * _strpbrk - searches a string for any of a set of bytes.
  *
  * @s: pointer to string to search
  * @accept: string of chars to accept
  *
- * Return: ponter s on success and NULL otherwise
+ * Return: pointer to the byte in s that matches one of the bytes in accept
+ * or NULL if no such byte is found
  */
 
 char *_strpbrk(char *s, char *accept)
