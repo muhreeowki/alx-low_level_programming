@@ -15,10 +15,6 @@
 
 char *_strstr(char *haystack, char *needle)
 {
-
-	int i;
-	int j;
-
 	for (i = 0; *(haystack + i) != '\0'; i++)
 	{
 		if (*(haystack + i) == *(needle))
@@ -28,6 +24,8 @@ char *_strstr(char *haystack, char *needle)
 				if (*(haystack + (i + j)) != *(needle + j) || *(haystack + (i + j)) == '\0')
 					break;
 			}
+
+			j++;
 
 			if (*(needle + j) == '\0')
 				return ((haystack + i));
