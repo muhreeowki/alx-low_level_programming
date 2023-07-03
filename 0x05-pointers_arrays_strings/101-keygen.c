@@ -10,43 +10,32 @@
 
 int main(void) 
 {
-	/* Variables */
-	int i;
-	int randomizer;
-	char password[10];
-	char symbols[] = "!@#$^&*?<>";
+	char password[100];
+	char c;
+	int sum, i, j;
+	time_t t;
 
-	/* Seed random number generator with current time*/
-	srand((unsigned int) (time(NULL)));
+	sum = 2772;
+	i = 0;
+	srand((unsigned int) time(&t));
 
-	randomizer = rand() % 4;
-
-	for (i = 0; i <= 10; i++)
+	while (sum - 33 > 93)
 	{
-		/* lowercase letter */
-		if (randomizer == 1)
-		{
-			*(password + i) = (rand() % (97 - 122 + 1)) + 97;
-		}
-		/* uppercase letter */
-		else if (randomizer == 2)
-		{
-			*(password + i) = (rand() % (65 - 90 + 1)) + 65;
-		}
-		/* symbol */
-		else if (randomizer == 3)
-		{
-			*(password + i) = symbols[rand() % 10];
-		}
-		/* number */
-		else
-		{
-			*(password + i) = (rand() % (48 - 57 + 1)) + 48;
-		}
-
-		randomizer = rand() % 4;
-		printf("%c", *(password + i));
+		c = rand() % 93;
+		password[i] = c + '!';
+		sum -= password[i];
+		i++;
 	}
 
+	if (sum > 0)
+		password[i] = sum;
+	else
+		i--;
+
+	for (j = 0; j <= i; j++)
+	{
+		putchar(password[j]);
+	}
+	putchar('\n');
 	return (0);
 }
