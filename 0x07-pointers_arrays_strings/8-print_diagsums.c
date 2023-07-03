@@ -16,12 +16,12 @@ void print_diagsums(int *a, int size)
 	sum1 = 0;
 	sum2 = 0;
 
-	for (i = 0, j = 0; i < size * size; i+= size, j++)
+	for (i = 0, j = 0; i < size * size; i += size, j++)
 	{
 		sum1 += *((a + i) + j);
 	}
 
-	for (i = 0, j = size - 1; i < size * size; i+= size, j--)
+	for (i = 0, j = size - 1; i < size * size; i += size, j--)
 	{
 		sum2 += *((a + i) + j);
 	}
