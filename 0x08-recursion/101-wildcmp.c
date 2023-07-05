@@ -1,27 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdio.h>
-
-/**
- * find_char - finds char c in string s
- *
- * @c: character
- * @s: pointer to string
- *
- * Return: pointer to string or NULL if char c not found
- */
-
-char *find_char(char *s, char c)
-{
-	if (*s == '\0')
-		return (NULL);
-
-	if (*s == c)
-		return (s - 1);
-
-	return (find_char(s + 1, c));
-}
-
 
 /**
  * wildcmp - compares 2 strings, however the * char
@@ -51,10 +28,7 @@ int wildcmp(char *s1, char *s2)
 
 		if (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1))
 			return (1);
-
-
 	}
 
 	return (0);
-
 }
