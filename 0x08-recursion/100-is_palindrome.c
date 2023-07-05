@@ -93,15 +93,17 @@ int _strcmp(char *s1, char *s2)
 int is_palindrome(char *s)
 {
 	char *revs;
+	int len;
+
+	len = _strlen(s);
+	revs = malloc(len + 1);
 
 	if (*s == '\0')
 		return (1);
 
-	revs = malloc(sizeof(s));
-
 	_strcpy(s, revs, 0);
 
-	reverse(revs, _strlen(s), 0);
+	reverse(revs, len, 0);
 
 	if (_strcmp(s, revs) == 0)
 		return (1);
