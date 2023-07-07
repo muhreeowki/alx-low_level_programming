@@ -3,6 +3,9 @@
 /**
  * main - This program prints out its name
  *
+ * @argc: number of arguments passed into the program
+ * @argv: array of arguments passed into the program
+ *
  * Return: Always 0 (success)
  */
 
