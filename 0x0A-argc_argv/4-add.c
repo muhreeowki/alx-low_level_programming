@@ -13,7 +13,7 @@
 
 int main(int argc, char *argv[])
 {
-	int i, j, sum;
+	int i, j, sum, num;
 
 	sum = 0;
 
@@ -25,17 +25,18 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
+		num = atoi(argv[i]);
+
 		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-
-			if (*(argv[i]) == '0' || isdigit(argv[i][j]) == 0)
+			if (num == 0 || isdigit(argv[i][j]) == 0)
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
 
-		sum += atoi(argv[i]);
+		sum += num;
 	}
 
 	printf("%d\n", sum);
