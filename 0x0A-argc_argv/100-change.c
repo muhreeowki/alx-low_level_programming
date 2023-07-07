@@ -1,9 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 /**
- * main - prints the minimum number of coins 
+ * get_coins - returns the number of coins needed to
+ * to make an amount of money.
+ *
+ * @ammount: ammount of money
+ *
+ * Return: number of coins
+ */
+int get_coins(int ammount)
+{
+	int coins;
+
+	coins = 0;
+
+	while (ammount > 0)
+	{
+		if (ammount >= 25)
+		{
+			ammount -= 25;
+			coins++;
+		}
+		else if (ammount >= 10)
+		{
+			ammount -= 10;
+			coins++;
+		}
+		else if (ammount >= 5)
+		{
+			ammount -= 5;
+			coins++;
+		}
+		else if (ammount >= 2)
+		{
+			ammount -= 2;
+			coins++;
+		}
+		else
+		{
+			ammount -= 1;
+			coins++;
+		}
+	}
+	return (coins);
+}
+
+/**
+ * main - prints the minimum number of coins
  * to make change for an amount of money.
  *
  * @argc: number of arguments passed into the program
@@ -14,7 +58,7 @@
 
 int main(int argc, char *argv[])
 {
-	int coins, ammount;
+	int ammount;
 
 	if (argc != 2)
 	{
@@ -30,38 +74,7 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	coins = 0;
-
-	while (ammount > 0)
-	{
-		if (ammount >= 25)
-		{
-			ammount -= 25;
-			coins ++;
-		}
-		else if (ammount >= 10)
-		{
-			ammount -= 10;
-			coins ++;
-		}
-		else if (ammount >= 5)
-		{
-			ammount -= 5;
-			coins ++;
-		}
-		else if (ammount >= 2)
-		{
-			ammount -= 2;
-			coins ++;
-		}
-		else
-		{
-			ammount -= 1;
-			coins ++;
-		}
-	}
-
-
-	printf("%d\n", coins);
+	printf("%d\n", get_coins(ammount));
 	return (0);
 }
+
