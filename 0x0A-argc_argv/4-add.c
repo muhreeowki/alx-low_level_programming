@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 
 		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			if (num == 0 || isdigit(argv[i][j]) == 0)
+			if (isdigit(argv[i][j]) == 0)
 			{
 				printf("Error\n");
 				return (1);
