@@ -19,6 +19,9 @@ char **strtow(char *str)
 	word_count = 0;
 	word_len = 0;
 
+	if (str == NULL || *str == '\0')
+		return (NULL);
+
 	/* Find the number of words */
 	for (i = 0; str[i] != '\0'; i++)
 	{
