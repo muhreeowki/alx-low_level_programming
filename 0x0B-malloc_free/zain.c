@@ -42,7 +42,7 @@ int main(void)
 	int w;
 
 	h = 20;
-	w = 20;
+	w = 50;
 	grid = alloc_grid(h, w);
 	if (grid == NULL)
 	{
