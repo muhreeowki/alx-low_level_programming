@@ -12,19 +12,19 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int **array1 = malloc(sizeof(int) * height);
-	int i, *array2;
+	int **array = malloc(sizeof(int) * height * width);
+	int i, *temp;
+
+	if (width <= 0 || height <= 0 || array == NULL)
+		return (NULL);
 
 	i = 0;
 
-	if (width <= 0 || height <= 0)
-		return (NULL);
-
 	for (i = 0; i < height; i++)
 	{
-		array2 = calloc(width, sizeof(int));
-		*(array1 + i) = array2;
+		temp = calloc(width, sizeof(int));
+		*(array + i) = temp;
 	}
 
-	return (array1);
+	return (array);
 }
