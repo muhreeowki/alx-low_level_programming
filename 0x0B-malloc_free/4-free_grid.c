@@ -5,8 +5,8 @@
 /**
  * free_grid - frees a 2 dimensional grid
  *
- * @width: size of array 2
- * @height: size of array 1
+ * @grid: pointer to 2d array
+ * @height: number of arrays in grid
  *
  * Return: Pointer to string, or NULL if it fails.
  */
