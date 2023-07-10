@@ -27,7 +27,7 @@ int **alloc_grid(int width, int height)
 
 	for (i = 0; i < height; i++)
 	{
-		temp = calloc(width, sizeof(int));
+		temp = calloc(width - 1, sizeof(int));
 		if (temp == NULL)
 			return (NULL);
 		*(array + i) = temp;
