@@ -3,6 +3,30 @@
 #include <stddef.h>
 #include <stdio.h>
 
+int word_counter(char *str)
+{
+	int i, words, flag;
+
+	flag = 0;
+	words = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == ' ')
+		{
+			flag = 0;
+		}
+
+		else if (flag == 0)
+		{
+			flag = 1;
+			words++;
+		}
+	}
+
+	return (words);
+}
+
 /**
  * argstostr - splits a string into words
  *
@@ -13,61 +37,68 @@
 
 char **strtow(char *str)
 {
-	int i, j, n, word_count, word_len, word_index;
+	/*
+	   0. Handle Errors
+	   1. Find the number of words in the string
+	   2. Allocate memory for an array of pointers for each word
+	   3. Find each word in memory.
+	   4. Turn each word into a string. Allocate enough memory for the string. Terminate the string.
+	   5. Add the string to the array of pointers.
+	   6. Return the array of pointers
+	 */
+
+	/* 0. Handle errors*/
 	char **words, *temp;
+	int i, n, j, wl, wi, word_count;
 
-	word_count = 0;
-	word_len = 0;
-
-	if (str == NULL || str[0] == '\0' || (str[0] == ' ' && str[1] == '\0'))
+	if (str == NULL || *str == '\0' || (*str == ' ' && *(str + 1) == '\0'))
 		return (NULL);
 
-	/* Find the number of words */
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (str[i] == ' ' && str[i - 1] != ' ')
-			word_count++;
-	}
+	/* 1. Count words */
+	word_count = word_counter(str);
 
-	if (word_count == 0)
+	/* 2. Allocate memory for array of pointers */
+	words = (char **) malloc(sizeof(char) * (word_count + 1));
+	
+	if (words == NULL)
 		return (NULL);
 
-	words = (char **) malloc(sizeof(char *) * (word_count + 2));
-	word_index = 0;
+	/* 3. Find each word in memory*/
+
+	wi = 0;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		while(str[i] != ' ')
+		if(str[i] == ' ' || str[i] == '\0')
 		{
-			word_len++;
-			i++;
-		}
-
-		if (word_len > 0)
-		{
-			temp = malloc(sizeof(char) * (word_len + 1));
-
-			if (temp == NULL)
+			if (wl > 0)
 			{
-				free(words);
-				free (temp);
-				return (NULL);
+				/* 4. Turn each word into a string,
+				   Allocate memory for the string,
+				   Terminate the string
+				   Append string to pointers array
+				 */
+				temp = malloc(sizeof(char) * (wl + 1));
+				if (temp == NULL)
+				{
+					free(words);
+					return (NULL);
+				}
+				
+				for (j = 0, n = i - wl; n < i; n++, j++)
+					temp[j] = str[n];
+
+				temp[j] = '\0';
+				words[wi] = temp;
+				wi++;
+				wl = 0;
 			}
-
-			for (j = 0, n = i - word_len; j < word_len; n++, j++)
-			{
-				temp[j] = str[n];
-			}
-
-			temp[j] = '\0';
-
-			words[word_index] = temp;
-
-			word_index++;
-
-			word_len = 0;
 		}
+		else
+			wl++;
 	}
+
+	words[wl] = NULL;
 
 	return (words);
 }
