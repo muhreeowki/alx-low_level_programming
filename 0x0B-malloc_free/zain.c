@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 /**
  * main - check the code for ALX School students.
@@ -11,7 +12,7 @@ int main(void)
 {
     char *s;
 
-    s = str_concat("Betty ", "Holberton");
+    s = str_concat(NULL, NULL);
     if (s == NULL)
     {
         printf("failed\n");
