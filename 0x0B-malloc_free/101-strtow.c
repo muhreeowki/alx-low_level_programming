@@ -50,8 +50,11 @@ char **strtow(char *str)
 			}
 
 			temp[j] = '\0';
+
 			words[word_index] = temp;
+
 			word_index++;
+
 			word_len = 0;
 		}
 	}
