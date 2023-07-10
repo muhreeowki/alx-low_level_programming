@@ -51,7 +51,7 @@ char **strtow(char *str)
 				return (NULL);
 			}
 
-			for (j = 0, n = i - word_len; n < i; n++, j++ )
+			for (j = 0, n = i - word_len; j < word_len; n++, j++)
 			{
 				temp[j] = str[n];
 			}
