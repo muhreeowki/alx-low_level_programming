@@ -16,6 +16,9 @@ char *str_concat(char *s1, char *s2)
 	int i, j, size;
 	char *new_string;
 
+	if (s1 == NULL && s2 == NULL)
+		return NULL;
+
 	/* Find the size of s1 and s2 */
 
 	i = 0;
@@ -26,7 +29,7 @@ char *str_concat(char *s1, char *s2)
 	for (j = 0; s2[j] != '\0'; j++)
 		;
 
-	size = i + j;
+	size = i + j + 1;
 
 	new_string = (char *) malloc(sizeof(char) * size);
 
