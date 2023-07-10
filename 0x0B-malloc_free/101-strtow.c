@@ -19,15 +19,18 @@ char **strtow(char *str)
 	word_count = 0;
 	word_len = 0;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || str[0] == '\0' || (str[0] == ' ' && str[1] == '\0'))
 		return (NULL);
 
 	/* Find the number of words */
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] == ' ')
+		if (str[i] == ' ' && str[i - 1] != ' ')
 			word_count++;
 	}
+
+	if (word_count == 0)
+		return (NULL);
 
 	words = (char **) malloc(sizeof(char *) * (word_count + 2));
 	word_index = 0;
