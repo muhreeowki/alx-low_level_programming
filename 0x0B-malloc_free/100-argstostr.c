@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdio.h>
 
 /**
  * argstostr - concatenates all arguments
@@ -27,10 +28,11 @@ char *argstostr(int ac, char **av)
 	{
 		for (j = 0; av[i][j] != '\0'; j++)
 			total_chars++;
+		total_chars++;
 	}
 
 	/* Allocate memory */
-	new = (char *) malloc(sizeof(char) * total_chars);
+	new = (char *) malloc(sizeof(char) * (total_chars + 1));
 
 	if (new == NULL)
 		return (NULL);
