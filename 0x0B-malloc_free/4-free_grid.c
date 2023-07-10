@@ -3,35 +3,20 @@
 #include <stddef.h>
 
 /**
- * alloc_grid - returns a pointer to a 2 dimensional array of integers.
+ * free_grid - frees a 2 dimensional grid
  *
  * @width: size of array 2
  * @height: size of array 1
  *
  * Return: Pointer to string, or NULL if it fails.
  */
-int **alloc_grid(int width, int height)
+
+void free_grid(int **grid, int height)
 {
-	int i, *temp;
-	int **array;
-
-	if (width <= 0 || height <= 0)
-		return (NULL);
-
-	array = malloc((sizeof(int *) * height) + (sizeof(int) * width));
-
-	if (array == NULL)
-		return (NULL);
-
-	i = 0;
+	int i;
 
 	for (i = 0; i < height; i++)
-	{
-		temp = calloc(width - 1, sizeof(int));
-		if (temp == NULL)
-			return (NULL);
-		*(array + i) = temp;
-	}
+		free(grid[i]);
 
-	return (array);
+	free(grid);
 }
