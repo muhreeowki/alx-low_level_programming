@@ -3,23 +3,32 @@
 #include <stddef.h>
 #include <stdio.h>
 
+/**
+ * word_counter - helper function to count
+ * the words in a string.
+ *
+ * @str: string
+ *
+ * Return: Number of words
+ */
+
 int word_counter(char *str)
 {
-	int i, words, flag;
+	int i, words, space;
 
-	flag = 0;
+	space = 0;
 	words = 0;
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] == ' ')
 		{
-			flag = 0;
+			space = 1;
 		}
 
-		else if (flag == 0)
+		else if (space == 1)
 		{
-			flag = 1;
+			space = 0;
 			words++;
 		}
 	}
@@ -27,8 +36,44 @@ int word_counter(char *str)
 	return (words);
 }
 
+
 /**
- * argstostr - splits a string into words
+ * add_word - helper function to add a word to
+ * an array of strings
+ *
+ * @words: array of strings
+ * @str: string
+ * @start: starting index of word
+ * @end: ending index of word
+ * @wi: index of the word in the array of strings
+ *
+ * Return: 0 (Success) -1 (failur)
+ */
+
+int add_word(char **words, char *str, int start, int end, int wi)
+{
+	int j, wl;
+	char *temp;
+	wl = end - start;
+
+	j = 0;
+
+	temp = (char *) malloc(sizeof(char) * (wl + 1));
+
+	if (temp == NULL)
+		return (-1);
+
+	for (j = 0; start < end; j++, start++)
+		temp[j] = str[start];
+
+	temp[j] = '\0';
+	words[wi] = temp;
+
+	return (0);
+}
+
+/**
+ * strtow - splits a string into words
  *
  * @str: string to split
  *
@@ -37,68 +82,45 @@ int word_counter(char *str)
 
 char **strtow(char *str)
 {
-	/*
-	   0. Handle Errors
-	   1. Find the number of words in the string
-	   2. Allocate memory for an array of pointers for each word
-	   3. Find each word in memory.
-	   4. Turn each word into a string. Allocate enough memory for the string. Terminate the string.
-	   5. Add the string to the array of pointers.
-	   6. Return the array of pointers
-	 */
-
-	/* 0. Handle errors*/
-	char **words, *temp;
-	int i, n, j, wl, wi, word_count;
+	char **words;
+	int word_count, len, i, wl, wi, start, end;
 
 	if (str == NULL || *str == '\0' || (*str == ' ' && *(str + 1) == '\0'))
 		return (NULL);
 
-	/* 1. Count words */
+	wl = wi = len = 0;
+
+	while (str[len] != '\0')
+		len++;
+
 	word_count = word_counter(str);
 
-	/* 2. Allocate memory for array of pointers */
-	words = (char **) malloc(sizeof(char) * (word_count + 1));
-	
+	words = (char **) malloc(sizeof(char *) * (word_count + 1));
 	if (words == NULL)
 		return (NULL);
 
-	/* 3. Find each word in memory*/
-
-	wi = 0;
-
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; i <= len; i++)
 	{
-		if(str[i] == ' ' || str[i] == '\0')
+		if (str[i] == ' ' || str[i] == '\0')
 		{
 			if (wl > 0)
 			{
-				/* 4. Turn each word into a string,
-				   Allocate memory for the string,
-				   Terminate the string
-				   Append string to pointers array
-				 */
-				temp = malloc(sizeof(char) * (wl + 1));
-				if (temp == NULL)
-				{
-					free(words);
+				end = i;
+				if (add_word(words, str, start, end, wi) == -1)
 					return (NULL);
-				}
-				
-				for (j = 0, n = i - wl; n < i; n++, j++)
-					temp[j] = str[n];
-
-				temp[j] = '\0';
-				words[wi] = temp;
 				wi++;
 				wl = 0;
 			}
 		}
-		else
-			wl++;
-	}
 
-	words[wl] = NULL;
+		else
+		{
+			if (wl == 0)
+				start = i;
+			wl++;
+		}
+	}
+	words[wi] = NULL;
 
 	return (words);
 }
