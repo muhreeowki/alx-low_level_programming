@@ -119,7 +119,6 @@ char **strtow(char *str)
 
 	wl = wi = len = 0;
 
-
 	while (str[len] != '\0')
 		len++;
 
