@@ -111,16 +111,15 @@ char **strtow(char *str)
 					return (NULL);
 				wi++;
 				wl = 0;
-				continue;
 			}
 		}
-
-		if (wl == 0)
-			start = i;
-		wl++;
+		else
+		{
+			if (wl == 0)
+				start = i;
+			wl++;
+		}
 	}
-
 	words[wi] = NULL;
-
 	return (words);
 }
