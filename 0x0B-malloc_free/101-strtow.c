@@ -86,7 +86,7 @@ char **strtow(char *str)
 	char **words;
 	int word_count, len, i, wl, wi, start, end;
 
-	if (str == NULL || *str == '\0' || (*str == ' ' && *(str + 1) == '\0'))
+	if ((*str == ' ' && *(str + 1) == '\0') || str == NULL || *str == '\0')
 		return (NULL);
 
 	wl = wi = len = 0;
@@ -97,6 +97,7 @@ char **strtow(char *str)
 	word_count = word_counter(str);
 
 	words = (char **) malloc(sizeof(char *) * (word_count + 1));
+
 	if (words == NULL)
 		return (NULL);
 
