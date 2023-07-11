@@ -54,6 +54,7 @@ int add_word(char **words, char *str, int start, int end, int wi)
 {
 	int j, wl;
 	char *temp;
+
 	wl = end - start;
 
 	j = 0;
@@ -110,16 +111,15 @@ char **strtow(char *str)
 					return (NULL);
 				wi++;
 				wl = 0;
+				continue;
 			}
 		}
 
-		else
-		{
-			if (wl == 0)
-				start = i;
-			wl++;
-		}
+		if (wl == 0)
+			start = i;
+		wl++;
 	}
+
 	words[wi] = NULL;
 
 	return (words);
