@@ -74,6 +74,34 @@ int add_word(char **words, char *str, int start, int end, int wi)
 }
 
 /**
+ * validate_string - checks if a string is valid
+ *
+ * @str: string
+ *
+ * Return: 0 (success) NULL (faliure)
+ */
+
+int validate_string(char *str)
+{
+	int i;
+
+	if (str == NULL || *str == '\0')
+		return (-1);
+
+	if (str[0] == ' ' && str[1] == '\0')
+		return (-1);
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if ((str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))
+			return (0);
+	}
+
+	return (-1);
+}
+
+
+/**
  * strtow - splits a string into words
  *
  * @str: string to split
@@ -86,17 +114,18 @@ char **strtow(char *str)
 	char **words;
 	int word_count, len, i, wl, wi, start, end;
 
-	if ((*str == ' ' && *(str + 1) == '\0') || str == NULL || *str == '\0')
+	if (validate_string(str) == -1)
 		return (NULL);
 
 	wl = wi = len = 0;
+
 
 	while (str[len] != '\0')
 		len++;
 
 	word_count = word_counter(str);
 
-	words = (char **) malloc(sizeof(char *) * (word_count + 1));
+	words = (char **) malloc(sizeof(char *) * (word_count + 2));
 
 	if (words == NULL)
 		return (NULL);
