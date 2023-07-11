@@ -12,16 +12,16 @@
  * Return: Number of words
  */
 
-int word_counter(char *str)
+int word_counter(char *str, int len)
 {
 	int i, words, space;
 
 	space = 0;
 	words = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	for (i = 0; i <= len; i++)
 	{
-		if (str[i] == ' ')
+		if (str[i] == ' ' || str[i] == '\0')
 		{
 			space = 1;
 		}
@@ -93,7 +93,7 @@ int validate_string(char *str)
 
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if ((str[i] >= 65 && str[i] <= 90) || (str[i] >= 97 && str[i] <= 122))
+		if (str[i] != ' ')
 			return (0);
 	}
 
@@ -122,9 +122,9 @@ char **strtow(char *str)
 	while (str[len] != '\0')
 		len++;
 
-	word_count = word_counter(str);
+	word_count = word_counter(str, len);
 
-	words = (char **) malloc(sizeof(char *) * (word_count + 2));
+	words = (char **) malloc(sizeof(char *) * (word_count + 1));
 
 	if (words == NULL)
 		return (NULL);
