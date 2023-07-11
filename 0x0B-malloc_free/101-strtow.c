@@ -12,16 +12,16 @@
  * Return: Number of words
  */
 
-int word_counter(char *str, int len)
+int word_counter(char *str)
 {
 	int i, words, space;
 
 	space = 0;
-	words = 0;
+	words = 1;
 
-	for (i = 0; i <= len; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (str[i] == ' ' || str[i] == '\0')
+		if (str[i] == ' ')
 		{
 			space = 1;
 		}
@@ -122,7 +122,7 @@ char **strtow(char *str)
 	while (str[len] != '\0')
 		len++;
 
-	word_count = word_counter(str, len);
+	word_count = word_counter(str);
 
 	words = (char **) malloc(sizeof(char *) * (word_count + 1));
 
