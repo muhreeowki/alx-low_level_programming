@@ -51,11 +51,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		i++;
 	}
 
-	while (n >= len2 && j < len2)
+	while (n >= len2 && i < (len1 + len2))
 		newstr[i++] = s2[j++];
 
-	while (n < len2 && j < n)
-		newstr[i++] = s2[j];
+	while (n < len2 && i < (len1 + n))
+		newstr[i++] = s2[j++];
 
 	newstr[i] = '\0';
 
