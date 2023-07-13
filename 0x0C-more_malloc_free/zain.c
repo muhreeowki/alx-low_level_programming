@@ -40,7 +40,14 @@ int main(void)
 {
     char *a;
 
-    a = _calloc(98, sizeof(char));
+    a = _calloc(0, sizeof(char));
+
+    if (a == NULL)
+    {
+	printf("failed\n");
+    	return (1);
+    }
+
     strcpy(a, "Best");
     strcpy(a + 4, " School! :)\n");
     a[97] = '!';

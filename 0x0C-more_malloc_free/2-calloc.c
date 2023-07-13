@@ -27,15 +27,13 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		if (*(array + i) == NULL)
 		{
 			for (j = 0; j <= i; j++)
-				free((array + j));
+				free((*(array + i) + j));
 			free(array);
 			return (NULL);
 		}
 
 		for (j = 0; j < size; j++)
-		{
 			array[i + j] = 0;
-		}
 	}
 
 	return (array);
