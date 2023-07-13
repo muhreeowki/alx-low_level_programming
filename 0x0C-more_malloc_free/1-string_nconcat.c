@@ -55,13 +55,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (n >= len2)
 	{
 		for (j = 0; s2[j] != '\0'; j++)
-			newstr[i + j] = s2[j];
+			newstr[i++] = s2[j];
 	}
 
 	else 
 	{
-		for (j = 0; j < n; j++)
-			newstr[i + j] = s2[j];
+		for (j = 0; i < (len1 + n); j++)
+			newstr[i++] = s2[j];
 	}
 
 
