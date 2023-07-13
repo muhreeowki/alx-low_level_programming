@@ -49,12 +49,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (newstr == NULL)
 		return (NULL);
 
-	for (i = 0; s1[i] != '\0'; i++)
+	for (i = 0; i < len1; i++)
 		newstr[i] = s1[i];
 
 	if (n >= len2)
 	{
-		for (j = 0; s2[j] != '\0'; j++)
+		for (j = 0; j < len2; j++)
 			newstr[i++] = s2[j];
 	}
 
