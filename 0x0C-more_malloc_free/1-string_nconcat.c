@@ -31,14 +31,20 @@ int _strlen(char *str)
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newstr;
-	unsigned int i, j;
+	unsigned int i, j, len1, len2;
 
 	if (s2 == NULL)
 		*s2 = '\0';
 	if (s1 == NULL)
 		*s1 = '\0';
 
-	newstr = malloc(_strlen(s1) + _strlen(s2) + 2);
+	len1 = _strlen(s1);
+	len2 = _strlen(s2);
+
+	if (n >= len2)
+		newstr = malloc(sizeof(char) * (len1 + len2 + 1));
+	else
+		newstr = malloc(sizeof(char) * (len1 + n + 1));
 
 	if (newstr == NULL)
 		return (NULL);
