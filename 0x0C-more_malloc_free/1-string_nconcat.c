@@ -58,14 +58,14 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			newstr[i++] = s2[j];
 	}
 
-	else 
+	else
 	{
-		for (j = 0; j <= n; j++)
+		for (j = 0; j < n; j++)
 			newstr[i++] = s2[j];
 	}
 
 
-	newstr[i + j] = '\0';
+	newstr[i] = '\0';
 
 	return (newstr);
 }
