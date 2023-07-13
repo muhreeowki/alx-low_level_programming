@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * _calloc - allocates memory and sets it to zero
+ * _calloc - allocates memory for an array and sets it to zero
  *
  * @size: of each array
  * @nmemb: number of arrays
@@ -12,29 +12,19 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 
-	int **array;
-	unsigned int i, j;
+	int *array;
+	unsigned int i;
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
 
-	array = malloc(sizeof(void *) * nmemb);
+	array = malloc(size * nmemb);
+
+	if (array == NULL)
+		return (NULL);
 
 	for (i = 0; i < nmemb; i++)
-	{
-		*(array + i) = malloc(size);
-
-		if (*(array + i) == NULL)
-		{
-			for (j = 0; j <= i; j++)
-				free((*(array + i) + j));
-			free(array);
-			return (NULL);
-		}
-
-		for (j = 0; j < size; j++)
-			array[i + j] = 0;
-	}
+		array[i] = 0;
 
 	return (array);
 }
