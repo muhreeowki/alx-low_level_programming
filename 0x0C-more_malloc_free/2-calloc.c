@@ -2,11 +2,10 @@
 #include <stdlib.h>
 
 /**
- * _calloc - concatenates n chars from s2 to s1
+ * _calloc - allocates memory and sets it to zero
  *
- * @s1: String 1
- * @s2: String 2
- * @n: number of chars to concatenate
+ * @size: of each array
+ * @nmemb: number of arrays
  *
  * Return: a pointer to the concatenated string
  */
