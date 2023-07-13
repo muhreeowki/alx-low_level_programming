@@ -35,7 +35,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	array = malloc(new_size);
 	old_array = ptr;
 
-	for (i = 0; i <= old_size; i++)
+	for (i = 0; i < old_size; i++)
 		*(array + i) = *(old_array + i);
 
 	free(ptr);
