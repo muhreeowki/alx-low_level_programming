@@ -52,8 +52,18 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	for (i = 0; s1[i] != '\0'; i++)
 		newstr[i] = s1[i];
 
-	for (j = 0; s2[j] != '\0' && j < n; j++)
-		newstr[i + j] = s2[j];
+	if (n >= len2)
+	{
+		for (j = 0; s2[j] != '\0'; j++)
+			newstr[i + j] = s2[j];
+	}
+
+	else 
+	{
+		for (j = 0; j < n; j++)
+			newstr[i + j] = s2[j];
+	}
+
 
 	newstr[i + j] = '\0';
 
