@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 int _strlen(char *str);
-void _strcpy(char *str, char *dest);
+char *_strcpy(char *str, char *dest);
 
 /**
  * new_dog - creates a new dog
@@ -20,8 +20,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *dog = malloc(sizeof(dog));
 
 	if (name == NULL || owner == NULL || age <= 0 || dog== NULL)
+	{
 		free(dog);
 		return (NULL);
+	}
 
 	dog->name = malloc(sizeof(_strlen(name)) + 1);
 	dog->owner = malloc(sizeof(_strlen(owner)) + 1);
@@ -34,8 +36,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	dog->name = _strcpy(name, new_name);
-	dog->owner = _strcpy(owner, new_owner);
+	dog->name = _strcpy(name, dog->name);
+	dog->owner = _strcpy(owner, dog->owner);
 	dog->age = age;
 
 	return (dog);
@@ -68,7 +70,7 @@ int _strlen(char *str)
  * @dest: pointer to buffer
  */
 
-void _strcpy(char *str, char *dest)
+char *_strcpy(char *str, char *dest)
 {
 	int i;
 
@@ -76,4 +78,6 @@ void _strcpy(char *str, char *dest)
 		dest[i] = str[i];
 
 	dest[i] = '\0';
+
+	return (dest);
 }
