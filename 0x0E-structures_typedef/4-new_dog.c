@@ -19,14 +19,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog = malloc(sizeof(dog));
 
-	if (name == NULL || owner == NULL || age <= 0 || dog== NULL)
+	if (name == NULL || owner == NULL || age <= 0 || dog == NULL)
 	{
 		free(dog);
 		return (NULL);
 	}
 
-	dog->name = malloc(sizeof(_strlen(name)) + 1);
-	dog->owner = malloc(sizeof(_strlen(owner)) + 1);
+	dog->name = malloc(_strlen(name) + 1);
+	dog->owner = malloc(_strlen(owner) + 1);
 
 	if (dog->name == NULL || dog->owner == NULL)
 	{
@@ -68,6 +68,8 @@ int _strlen(char *str)
  *
  * @str: string to copy
  * @dest: pointer to buffer
+ *
+ * Return: dest
  */
 
 char *_strcpy(char *str, char *dest)
