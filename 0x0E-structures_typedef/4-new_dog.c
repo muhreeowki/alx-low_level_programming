@@ -25,6 +25,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_name = malloc(sizeof(_strlen(name)));
 	dog_owner = malloc(sizeof(_strlen(owner)));
 
+	if (new_dog == NULL || dog_name == NULL || dog_owner == NULL)
+		return (NULL);
+
 	_strcpy(name, dog_name);
 	_strcpy(owner, dog_owner);
 
@@ -41,7 +44,7 @@ dog_t *new_dog(char *name, float age, char *owner)
  *
  * @str: pointer to a string
  *
- * @Return: length of the strng
+ * Return: length of the strng
  */
 
 int _strlen(char *str)
@@ -59,8 +62,6 @@ int _strlen(char *str)
  *
  * @str: string to copy
  * @dest: pointer to buffer
- *
- * @Return: length of the strng
  */
 
 void _strcpy(char *str, char *dest)
