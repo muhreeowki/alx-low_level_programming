@@ -18,17 +18,24 @@ void _strcpy(char *str, char *dest);
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog = malloc(sizeof(dog));
-	char *new_name = malloc(sizeof(_strlen(name)) + 1);
-	char *new_owner = malloc(sizeof(_strlen(owner)) + 1);
 
-	if (new_name == NULL || new_owner == NULL)
+	if (name == NULL || owner == NULL || age <= 0 || dog== NULL)
+		free(dog);
 		return (NULL);
 
-	_strcpy(name, new_name);
-	_strcpy(owner, new_owner);
+	dog->name = malloc(sizeof(_strlen(name)) + 1);
+	dog->owner = malloc(sizeof(_strlen(owner)) + 1);
 
-	dog->name = new_name;
-	dog->owner = new_owner;
+	if (dog->name == NULL || dog->owner == NULL)
+	{
+		free(dog->name);
+		free(dog->owner);
+		free(dog);
+		return (NULL);
+	}
+
+	dog->name = _strcpy(name, new_name);
+	dog->owner = _strcpy(owner, new_owner);
 	dog->age = age;
 
 	return (dog);
