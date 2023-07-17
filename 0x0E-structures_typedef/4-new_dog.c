@@ -17,25 +17,27 @@ void _strcpy(char *str, char *dest);
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *new_dog;
+	dog_t new_dog;
+	dog_t *ptr;
 
 	char *dog_name, *dog_owner;
 
-	new_dog = malloc(sizeof(dog_t));
 	dog_name = malloc(sizeof(_strlen(name)) + 1);
 	dog_owner = malloc(sizeof(_strlen(owner)) + 1);
 
-	if (new_dog == NULL || dog_name == NULL || dog_owner == NULL)
+	if (dog_name == NULL || dog_owner == NULL)
 		return (NULL);
 
 	_strcpy(name, dog_name);
 	_strcpy(owner, dog_owner);
 
-	new_dog->name = dog_name;
-	new_dog->age = age;
-	new_dog->owner = dog_owner;
+	new_dog.name = dog_name;
+	new_dog.age = age;
+	new_dog.owner = dog_owner;
 
-	return (new_dog);
+	ptr = &new_dog;
+
+	return (ptr);
 }
 
 
@@ -56,6 +58,7 @@ int _strlen(char *str)
 
 	return (i);
 }
+
 
 /**
  * _strcpy - copies a string into a buffer
