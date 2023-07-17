@@ -1,9 +1,5 @@
 #include "dog.h"
-#include <stdio.h>
 #include <stdlib.h>
-
-int _strlen(char *str);
-char *_strcpy(char *str, char *dest);
 
 /**
  * free_dog - frees dog struct from memory
