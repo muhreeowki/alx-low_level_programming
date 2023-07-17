@@ -63,11 +63,9 @@ int _strlen(char *str)
 
 void _strcpy(char *str, char *dest)
 {
-	int i, len;
+	int i;
 
-	len = _strlen(str);
-
-	for (i = 0; i < len; i++)
+	for (i = 0; str[i] != '\0'; i++)
 		dest[i] = str[i];
 
 	dest[i] = '\0';
