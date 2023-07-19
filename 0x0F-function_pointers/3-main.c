@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "3-calc.h"
-#include "function_pointers.h"
 
 /**
  * main - This program perferms an operation on two numbers
@@ -30,12 +29,6 @@ int main(int argc, char **argv)
 	{
 		printf("Error\n");
 		exit(99);
-	}
-
-	if ((*(argv[2]) == '/' || *(argv[2]) == '%') && num2 == 0)
-	{
-		printf("Error\n");
-		exit(100);
 	}
 
 	result = function(num1, num2);
