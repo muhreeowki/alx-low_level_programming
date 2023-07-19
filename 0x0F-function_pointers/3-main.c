@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "3-calc.h"
+#include "function_pointers.h"
 
 /**
  * main - This program perferms an operation on two numbers
