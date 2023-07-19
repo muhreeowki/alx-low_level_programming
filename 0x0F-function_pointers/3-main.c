@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 
 	function = get_op_func(argv[2]);
 
-	if (function == NULL)
+	if (function == NULL || argv[2][1])
 	{
 		printf("Error\n");
 		exit(99);
