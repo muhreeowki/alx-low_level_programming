@@ -8,7 +8,7 @@
  * @cmp: pointer to a function that is used
  * to compare values
  *
- * Return: index to the integer. 
+ * Return: index to the integer.
  * return -1 if int is not found
  */
 int int_index(int *array, int size, int (*cmp)(int))
