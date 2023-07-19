@@ -1,6 +1,14 @@
 #include <stdlib.h>
 #include "3-calc.h"
 
+/**
+ * main - This program perferms an operation on two numbers
+ *
+ * @argc: number of command line arguments passed in
+ * @argv: array of command line arguments
+ *
+ * Return: 0 (success)
+ */
 int main(int argc, char **argv)
 {
 	int num1, num2, result;
@@ -16,7 +24,7 @@ int main(int argc, char **argv)
 	num2 = atoi(argv[3]);
 
 	function = get_op_func(argv[2]);
-	
+
 	if (function == NULL)
 	{
 		printf("Error\n");
