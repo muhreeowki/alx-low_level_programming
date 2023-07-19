@@ -8,15 +8,5 @@
  */
 void print_name(char *name, void (*f)(char *))
 {
-	if (*name)
-	{
-
-		if (f)
-			f(name);
-		else
-		{
-			while (*name != '\0')
-				_putchar(*name++);
-		}
-	}
+	f(name);
 }
