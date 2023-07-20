@@ -1,15 +1,15 @@
 #include "variadic_functions.h"
 
 /**
- * print_numbers - prints all numbers passed in as arguments
+ * print_strings - prints all strings passed in as arguments
  *
- * @n: number of arguments
+ * @n: number of strings
  * @separator: chars to separate the numbers
  *
  * Return: sum of all arguments
  */
 
-void print_numbers(const char *separator, const unsigned int n, ...)
+void print_strings(const char *separator, const unsigned int n, ...)
 {
 	unsigned int i;
 	va_list args;
@@ -18,10 +18,11 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	for (i = 0; i < n; i++)
 	{
-		printf("%d", va_arg(args, int));
+		printf("%s", va_arg(args, char *));
 		if (i != (n - 1) && separator)
 			printf("%s", separator);
 	}
+
 	printf("\n");
 
 	va_end(args);
