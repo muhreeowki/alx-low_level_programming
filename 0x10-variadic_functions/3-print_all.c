@@ -3,10 +3,9 @@
 int _strlen(char *str);
 
 /**
- * print_strings - prints all strings passed in as arguments
+ * print_all - prints all arguments
  *
- * @n: number of strings
- * @separator: chars to separate the numbers
+ * @format: list of types of arguments passed to the function
  *
  * Return: sum of all arguments
  */
@@ -28,26 +27,29 @@ void print_all(const char * const format, ...)
 		{
 			switch (format[i])
 			{
-				case 'c':	
+				case 'c':
 					printf("%s%c", separator, va_arg(args, int));
 					break;
 
-				case 'i':	
+				case 'i':
 					printf("%s%d", separator, va_arg(args, int));
 					break;
-					
-				case 's':	
+
+				case 's':
 					str = va_arg(args, char *);
 					if (!str)
-						str = "(nil)";
+					{
+						printf("(nil)");
+						break;
+					}
 					printf("%s%s", separator, va_arg(args, char *));
 					break;
 
-				case 'f':	
+				case 'f':
 					printf("%s%f", separator, va_arg(args, double));
 					break;
 
-				default: 
+				default:
 					i++;
 					continue;
 			}
