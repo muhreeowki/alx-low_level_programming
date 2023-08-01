@@ -1,10 +1,10 @@
 #include "lists.h"
 
 /**
- * add_node - adds a new node at the beginning of a linked list
+ * add_nodeint - adds a new node at the beginning of a linked list
  *
  * @head: pointer to the head of the linked list
- * @str: data to add to new node
+ * @n: data to add to new node
  *
  * Return: address of new element
  * return NULL if failed.

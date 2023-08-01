@@ -5,7 +5,8 @@
  * a linked list.
  *
  * @head: pointer to the head of the linked list
- * @index: index of the node
+ * @idx: index of the node
+ * @n: number to add to the node
  *
  * Return: the node
  */

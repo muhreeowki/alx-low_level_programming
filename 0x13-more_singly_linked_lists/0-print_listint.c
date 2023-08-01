@@ -31,7 +31,7 @@ size_t print_listint(const listint_t *h)
 }
 
 /**
- * _print_number - Print an unsigned integer to stdout.
+ * print_number - Print an unsigned integer to stdout.
  *
  * @n: The unsigned integer to convert and print.
  *
