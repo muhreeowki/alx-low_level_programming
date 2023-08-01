@@ -3,13 +3,15 @@
 size_t print_listint(const listint_t *h)
 {
 	int i = 0;
-	listint_t item = h;
+	const listint_t *item = h;
 
-	while (item->next != NULL)
+	while (item)
 	{
 		if (item->n < 0)
 			_putchar('-');
 		print_number(item->n);
+		_putchar('\n');
+		item = item->next;
 		i++;
 	}
 
