@@ -17,12 +17,12 @@ int create_file(const char *filename, char *text_content)
 {
 	int fd, length, written;
 
-	if (filename == NULL)
+	if (filename == NULL || *filename == '\0')
 		return (-1);
 
 	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 
-	if (fd == -1)
+	if (fd < 0)
 		return (-1);
 
 	length = _strlen(text_content);
@@ -31,7 +31,7 @@ int create_file(const char *filename, char *text_content)
 	{
 		written = write(fd, text_content, length);
 
-		if (written == -1 || written != length)
+		if (written < 0 || written != length)
 			return (-1);
 	}
 
