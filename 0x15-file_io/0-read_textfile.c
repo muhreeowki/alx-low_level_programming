@@ -17,12 +17,6 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	/* 1. open the file. if unable to open return 0 */
-	/* 2. read the file's content. */
-	/* 3. write the file's content */
-	/* 4. close the file */
-	/* 5. return the count. */
-
 	int fd, count, written;
 	char *buf = malloc(sizeof(char) * letters);
 
@@ -42,5 +36,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	close(fd);
+	free(buf);
 	return (written);
 }
