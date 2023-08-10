@@ -4,7 +4,7 @@
 int _strlen(char *str);
 
 /**
- * create_file - reads a text file and prints it to
+ * append_text_to_file - appends text at the end of a file.
  *
  * @filename: Name of the file to be opened.
  * @text_content: a NULL terminated string
@@ -12,14 +12,14 @@ int _strlen(char *str);
  * Return: 1 (success) -1 (failur)
  */
 
-int create_file(const char *filename, char *text_content)
+int append_text_to_file(const char *filename, char *text_content)
 {
 	int fd, length, written;
 
 	if (filename == NULL || *filename == '\0')
 		return (-1);
 
-	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+	fd = open(filename, O_WRONLY | O_APPEND);
 
 	if (fd < 0)
 		return (-1);
