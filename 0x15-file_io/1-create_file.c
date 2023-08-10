@@ -25,7 +25,7 @@ int create_file(const char *filename, char *text_content)
 	if (fd < 0)
 		return (-1);
 
-	length = _strlen(text_content);
+	length = _strlen(text_content) + 1;
 
 	if (length > 0)
 	{
@@ -50,10 +50,10 @@ int create_file(const char *filename, char *text_content)
 
 int _strlen(char *str)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
-		;
+	while (str[i] != '\0')
+		i++;
 
 	return (i);
 }
