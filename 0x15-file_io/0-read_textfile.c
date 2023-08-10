@@ -25,18 +25,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	char *buf = malloc(sizeof(char) * letters);
 
 	if (filename == NULL || *filename == '\0' || buf == NULL)
-		return (1);
+		return (0);
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
-		return (2);
+		return (0);
 
 	count = read(fd, buf, letters);
 	if (count == -1)
-		return (3);
+		return (0);
 
 	written = write(1, buf, count);
 	if (written != count || written == -1)
-		return (4);
+		return (0);
 
 	return (written);
 }
