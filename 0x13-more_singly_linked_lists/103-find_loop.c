@@ -1,11 +1,11 @@
 #include "lists.h"
 
 /**
- * free_listint_safe - frees a linked list with a loop in it
+ * find_listint_loop - finds a cycle in a linked list
  *
- * @h: Head of the linked list
+ * @head: Head of the linked list
  *
- * Return: number of nodes
+ * Return: address of where cycle occures
  */
 listint_t *find_listint_loop(listint_t *head)
 {
@@ -14,6 +14,9 @@ listint_t *find_listint_loop(listint_t *head)
 	if (head)
 	{
 		pointer1 = pointer2 = head;
+
+		if (head->next && head->next->next && head == head->next->next)
+			return (head->next->next);
 
 		while (pointer2 != NULL && pointer2->next != NULL)
 		{
