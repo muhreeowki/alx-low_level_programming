@@ -10,7 +10,7 @@
 size_t free_listint_safe(listint_t **h)
 {
 	size_t count = 0;
-	const listint_t *item, *next, **list;
+	const listint_t *item, **list;
 	int i, loop = 0, start = 1;
 
 	if (h == NULL || *h == NULL)
@@ -45,18 +45,12 @@ size_t free_listint_safe(listint_t **h)
 		item = item->next;
 	}
 
-	item = *h;
-	for (i = 0; list[i] != NULL; i++)
+	for (i = 1; list[i] != NULL; i++)
 	{
-		if (item != NULL)
-		{
-			next = item->next;
-			free((listint_t *)item);
-			item = next;
-		}
+		free((listint_t *) list[i]);
 	}
-	*h = NULL;
 
+	*h = NULL;
 	free(list);
-	return (count);
+	return (i);
 }
