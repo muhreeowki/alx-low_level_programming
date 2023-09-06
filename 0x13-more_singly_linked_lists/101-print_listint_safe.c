@@ -1,6 +1,7 @@
 #include "lists.h"
 
-const listint_t **make_pointer_list(const listint_t *pointer, const listint_t **list, int count);
+const listint_t **make_pointer_list(const listint_t *pointer,
+		const listint_t **list, int count);
 
 /**
  * print_listint_safe - Print each item in a linked list
@@ -12,19 +13,26 @@ const listint_t **make_pointer_list(const listint_t *pointer, const listint_t **
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t count = 0;
-	const listint_t *item = head;
-	const listint_t **list = make_pointer_list(NULL, NULL, 1);
-	int i, loop = 0;
+	const listint_t *item, **list;
+	int i, loop = 0, start = 1;
 
 	if (head == NULL)
 		exit(98);
 
-	while (item != NULL)
+	list = make_pointer_list(head, NULL, 1);
+	item = head;
+
+	while (item != NULL && loop == 0)
 	{
 		/* Check if item is in list */
 		for (i = 0; list[i] != NULL; i++)
 		{
-			if (list[i] == item)
+			if (start == 1)
+			{
+				start = 0;
+				break;
+			}
+			if ((void *)list[i] == (void *)item)
 			{
 				loop = 1;
 				break;
@@ -35,6 +43,8 @@ size_t print_listint_safe(const listint_t *head)
 		printf("[%p] %d\n", (void *)item, item->n);
 		count++;
 		list = make_pointer_list(item, list, count);
+		if (list == NULL)
+			exit(98);
 		item = item->next;
 	}
 
@@ -45,14 +55,29 @@ size_t print_listint_safe(const listint_t *head)
 	return (count);
 }
 
-const listint_t **make_pointer_list(const listint_t *pointer, const listint_t **list, int count)
+
+/**
+ * make_pointer_list - adds a pointer to a list of pointers,
+ * or creates a list of pointers if no list is provided.
+ *
+ * @pointer: pointer to be added
+ * @list: list to append to
+ * @count: number of items in the list
+ *
+ * Return: number of nodes
+ */
+const listint_t **make_pointer_list(const listint_t *pointer,
+		const listint_t **list, int count)
 {
 	const listint_t **new_list = malloc(sizeof(listint_t **) * (count + 2));
 	int i;
 
 	/* if malloc fails */
 	if (new_list == NULL)
+	{
+		free(list);
 		return (NULL);
+	}
 
 	/*If list is empty*/
 	if (list == NULL)
