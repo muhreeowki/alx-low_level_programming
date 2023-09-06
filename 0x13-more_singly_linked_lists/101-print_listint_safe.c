@@ -1,7 +1,5 @@
 #include "lists.h"
 
-const listint_t **make_pointer_list(const listint_t *pointer,
-		const listint_t **list, int count);
 
 /**
  * print_listint_safe - Print each item in a linked list
