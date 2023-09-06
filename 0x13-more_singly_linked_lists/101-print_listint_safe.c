@@ -22,7 +22,6 @@ size_t print_listint_safe(const listint_t *head)
 
 	while (item != NULL && loop == 0)
 	{
-		/* Check if item is in list */
 		for (i = 0; list[i] != NULL; i++)
 		{
 			if (start == 1)
@@ -32,8 +31,9 @@ size_t print_listint_safe(const listint_t *head)
 			}
 			if ((void *)list[i] == (void *)item)
 			{
-				loop = 1;
-				break;
+				printf("-> [%p] %d\n", (void *)item, item->n);
+				free(list);
+				return (count);
 			}
 		}
 		if (loop == 1)
@@ -45,9 +45,6 @@ size_t print_listint_safe(const listint_t *head)
 			exit(98);
 		item = item->next;
 	}
-
-	if (loop == 1)
-		printf("-> [%p] %d\n", (void *)item, item->n);
 
 	free(list);
 	return (count);
