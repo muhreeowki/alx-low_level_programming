@@ -19,10 +19,8 @@ size_t free_listint_safe(listint_t **h)
 	list = make_pointer_list(*h, NULL, 1);
 	item = *h;
 
-	/* Collect all the pointers */
 	while (item != NULL && loop == 0)
 	{
-		/* Check if item is in list */
 		for (i = 0; list[i] != NULL; i++)
 		{
 			if (start == 1)
@@ -46,11 +44,9 @@ size_t free_listint_safe(listint_t **h)
 	}
 
 	for (i = 1; list[i] != NULL; i++)
-	{
 		free((listint_t *) list[i]);
-	}
 
 	*h = NULL;
 	free(list);
-	return (i);
+	return (i - 1);
 }
