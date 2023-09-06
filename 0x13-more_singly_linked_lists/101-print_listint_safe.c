@@ -17,7 +17,7 @@ size_t print_listint_safe(const listint_t *head)
 	int i, loop = 0, start = 1;
 
 	if (head == NULL)
-		exit(98);
+		return (0);
 
 	list = make_pointer_list(head, NULL, 1);
 	item = head;
