@@ -9,38 +9,33 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	size_t count = 0;
-	const listint_t *item, **list;
-	int i, start = 1;
+	listint_t *pointer1 = NULL, *pointer2 = NULL;
 
-	if (head == NULL)
-		return (0);
-
-	list = make_pointer_list(head, NULL, 1);
-	item = head;
-
-	while (item != NULL)
+	if (head)
 	{
-		for (i = 0; list[i] != NULL; i++)
-		{
-			if (start == 1)
-			{
-				start = 0;
-				break;
-			}
-			if ((void *)list[i] == (void *)item)
-			{
-				free(list);
-				return ((listint_t *) item);
-			}
-		}
-		count++;
-		list = make_pointer_list(item, list, count);
-		if (list == NULL)
-			exit(98);
-		item = item->next;
-	}
+		pointer1 = pointer2 = head;
 
-	free(list);
+		while (pointer2 != NULL && pointer2->next != NULL)
+		{
+			pointer1 = pointer1->next;
+			pointer2 = pointer2->next->next;
+
+			if (pointer1 == pointer2)
+				break;
+		}
+
+		if (pointer1 == pointer2)
+		{
+			pointer1 = head;
+
+			while (pointer1->next != pointer2->next)
+			{
+				pointer1 = pointer1->next;
+				pointer2 = pointer2->next;
+			}
+
+			return (pointer1->next);
+		}
+	}
 	return (NULL);
 }
