@@ -1,10 +1,9 @@
 #include "lists.h"
 
 /**
- * free_dlistint - adds a node to the end of a doubly linked list
+ * free_dlistint - frees a linked list
  *
  * @head: head of a dlistint_t list.
- * @n: number to add to the node
  *
  * Return: number of elements
  */
