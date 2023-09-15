@@ -1,9 +1,11 @@
 #include "lists.h"
 
 /**
- * sum_dlistint - sums up a list of data in a linked list
+ * insert_dnodeint_at_index - inserts a node at an index
  *
- * @head: head of a dlistint_t list.
+ * @h: head of a dlistint_t list.
+ * @idx: index to insert node to.
+ * @n: number
  *
  * Return: sum of elements
  */
