@@ -92,7 +92,7 @@ int main(void)
 	size_t n;
 
 	head = _create_dlist(2, -12, 6);
-	node = insert_dnodeint_at_index(&head, 1, 98);
+	node = insert_dnodeint_at_index(&head, 2, 98);
 	if (node)
 		printf("-> %d\n", node->n);
 	else
