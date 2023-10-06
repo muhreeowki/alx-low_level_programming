@@ -14,7 +14,12 @@ int main(void)
     int result;
 
     ht = hash_table_create(1024);
-    result = hash_table_set(ht, "", "empty");
+    result = hash_table_set(ht, "muriuki", "My Name Is Muriuki");
+    if (result == 1)
+	    print_hash_table(ht);
+
+    return (EXIT_SUCCESS);
+}
     /*
     hash_table_set(ht, "mentioner", "mentioner");
     hash_table_set(ht, "heliotropes", "heliotropes");
@@ -30,7 +35,3 @@ int main(void)
     hash_table_set(ht, "dram", "dram");
     hash_table_set(ht, "vivency", "vivency");
     */
-    if (result == 1)
-	    print_hash_table(ht);
-    return (EXIT_SUCCESS);
-}

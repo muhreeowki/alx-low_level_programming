@@ -28,7 +28,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new_node->next = NULL;
 	/* run the hash function with the key */
 	hash = key_index((const unsigned char *)key, ht->size);
-	printf("hash: %ld\n", hash);
 	/* add the new element to the list */
 	ht->array[hash] = insert(ht->array[hash], new_node);
 
@@ -46,9 +45,22 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 hash_node_t *insert(hash_node_t *head, hash_node_t *element)
 {
+	hash_node_t *node;
+
 	if (head == NULL)
 		return (element);
-
+	/* Check if the key is already in the list */
+	node = head;
+	while (node)
+	{
+		if (_strcmp(node->key, element->key) == 0)
+		{
+			node->value = element->value;
+			free(element);
+			return (head);
+		}
+	}
+	/* if not prepend the element */
 	element->next = head;
 	head = element;
 
@@ -119,3 +131,30 @@ void print_hash_table(hash_table_t *ht)
 	}
 }
 
+/**
+ * _strcmp - copmares two strings case sensitivly.
+ *
+ * @s1: pointer to string to be compared
+ * @s2: pointer to string to compare to
+ *
+ * Return: 0 if strings are equal
+ * 1 if the first non-matching character in str1 is greater than that of str2
+ * -1 if the first non-matching character in str1 is less than that of str2
+ */
+
+int _strcmp(char *s1, char *s2)
+{
+
+	int i;
+
+	i = 0;
+
+	while (*(s1 + i) == *(s2 + i))
+	{
+		if (*(s1 + i) == '\0')
+			return (0);
+		i++;
+	}
+
+	return (*(s1 + i) - *(s2 + i));
+}
