@@ -14,8 +14,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int hash = 0;
 	hash_node_t *new_node = NULL;
-	
-	if (key == NULL || ht == NULL)
+
+	if (key == NULL || ht == NULL || *key == '\0')
 		return (0);
 
 	/* create a new node */
@@ -39,7 +39,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
  * insert - function that adds an element to a linked list
  *
  * @head: head of the linked list
- * @value: value to add
+ * @element: value to add
  *
  * Return: 1 (success) 0 (faliure)
  */
@@ -109,7 +109,7 @@ void print_hash_table(hash_table_t *ht)
 		{
 			printf("index %ld:", i);
 			node = ht->array[i];
-			while(node)
+			while (node)
 			{
 				printf("\t%s ->", node->value);
 				node = node->next;

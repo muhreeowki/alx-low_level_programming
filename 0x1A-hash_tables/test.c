@@ -11,14 +11,26 @@
 int main(void)
 {
     hash_table_t *ht;
+    int result;
 
     ht = hash_table_create(1024);
-    hash_table_set(ht, "betty", "cool1");
-    hash_table_set(ht, "heta", "cool2");
-    hash_table_set(ht, "heliotropes", "cool3");
-    hash_table_set(ht, "depravement", "cool4");
-    hash_table_set(ht, "mentioner", "cool5");
-    hash_table_set(ht, "neurospora", "cool6");
-    hash_table_set(ht, "serafins", "cool7");
+    result = hash_table_set(ht, "", "empty");
+    /*
+    hash_table_set(ht, "mentioner", "mentioner");
+    hash_table_set(ht, "heliotropes", "heliotropes");
+    hash_table_set(ht, "neurospora", "neurospora");
+    hash_table_set(ht, "depravement", "depravement");
+    hash_table_set(ht, "serafins", "serafins");
+    hash_table_set(ht, "stylist", "stylist");
+    hash_table_set(ht, "subgenera", "subgenera");
+    hash_table_set(ht, "joyful", "joyful");
+    hash_table_set(ht, "synaphea", "synaphea");
+    hash_table_set(ht, "redescribed", "redescribed");
+    hash_table_set(ht, "urites", "urites");
+    hash_table_set(ht, "dram", "dram");
+    hash_table_set(ht, "vivency", "vivency");
+    */
+    if (result == 1)
+	    print_hash_table(ht);
     return (EXIT_SUCCESS);
 }
