@@ -10,18 +10,15 @@
  */
 int main(void)
 {
-    char *s;
-    unsigned long int hash_table_array_size;
+    hash_table_t *ht;
 
-    hash_table_array_size = 1024;
-    s = "cisfun";
-    printf("%lu\n", hash_djb2((unsigned char *)s));
-    printf("%lu\n", key_index((unsigned char *)s, hash_table_array_size));
-    s = "Don't forget to tweet today";
-    printf("%lu\n", hash_djb2((unsigned char *)s));
-    printf("%lu\n", key_index((unsigned char *)s, hash_table_array_size));
-    s = "98";
-    printf("%lu\n", hash_djb2((unsigned char *)s));
-    printf("%lu\n", key_index((unsigned char *)s, hash_table_array_size));  
+    ht = hash_table_create(1024);
+    hash_table_set(ht, "betty", "cool1");
+    hash_table_set(ht, "heta", "cool2");
+    hash_table_set(ht, "heliotropes", "cool3");
+    hash_table_set(ht, "depravement", "cool4");
+    hash_table_set(ht, "mentioner", "cool5");
+    hash_table_set(ht, "neurospora", "cool6");
+    hash_table_set(ht, "serafins", "cool7");
     return (EXIT_SUCCESS);
 }
