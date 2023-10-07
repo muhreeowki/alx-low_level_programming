@@ -23,7 +23,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (new_node == NULL)
 		return (0);
 	/* initialize the node */
-	new_node->key = (char *)key;
+	new_node->key = _strdup((char *)key);
 	new_node->value = _strdup((char *)value);
 	new_node->next = NULL;
 	/* run the hash function with the key */
