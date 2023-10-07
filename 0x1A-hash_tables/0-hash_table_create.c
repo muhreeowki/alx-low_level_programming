@@ -31,33 +31,3 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	return (new_table);
 }
-
-/**
- * print_hash_table - function that prints a hash table
- *
- * @ht: hash table to print
- *
- * Return: nothing
- */
-void print_hash_table(hash_table_t *ht)
-{
-	hash_node_t *node;
-	unsigned long int i;
-
-	for (i = 0; i < ht->size; i++)
-	{
-		if (ht->array[i] == NULL)
-			printf("index %ld:\t---\n", i);
-		else
-		{
-			printf("index %ld:", i);
-			node = ht->array[i];
-			while (node)
-			{
-				printf("\t%s ->", node->value);
-				node = node->next;
-			}
-			printf("\n");
-		}
-	}
-}
