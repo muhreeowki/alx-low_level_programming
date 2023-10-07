@@ -59,6 +59,7 @@ hash_node_t *insert(hash_node_t *head, hash_node_t *element)
 			free(element);
 			return (head);
 		}
+		node = node->next;
 	}
 	/* if not prepend the element */
 	element->next = head;
