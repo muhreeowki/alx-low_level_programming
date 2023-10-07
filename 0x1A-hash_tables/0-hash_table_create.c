@@ -33,40 +33,6 @@ hash_table_t *hash_table_create(unsigned long int size)
 	return (new_table);
 }
 
-
-
-/**
- * _strdup - creates a duplicate of a string.
- *
- * @str: pointer to string to duplicate
- *
- * Return: Pointer to string, or NULL if it fails.
- */
-
-char *_strdup(char *str)
-{
-	int i, n = 0;
-	char *dupstr = NULL;
-
-	if (str == NULL)
-		return (NULL);
-
-	while (*(str + n) != '\0')
-		n++;
-
-	dupstr = (char *) malloc(sizeof(char) * n + 1);
-	if (dupstr == NULL)
-		return (NULL);
-
-	for (i = 0; i < n; i++)
-		dupstr[i] = str[i];
-
-	dupstr[i] = '\0';
-
-	return (dupstr);
-}
-
-
 /**
  * print_hash_table - function that prints a hash table
  *
@@ -96,32 +62,4 @@ void print_hash_table(hash_table_t *ht)
 			printf("\n");
 		}
 	}
-}
-
-/**
- * _strcmp - copmares two strings case sensitivly.
- *
- * @s1: pointer to string to be compared
- * @s2: pointer to string to compare to
- *
- * Return: 0 if strings are equal
- * 1 if the first non-matching character in str1 is greater than that of str2
- * -1 if the first non-matching character in str1 is less than that of str2
- */
-
-int _strcmp(char *s1, char *s2)
-{
-
-	int i;
-
-	i = 0;
-
-	while (*(s1 + i) == *(s2 + i))
-	{
-		if (*(s1 + i) == '\0')
-			return (0);
-		i++;
-	}
-
-	return (*(s1 + i) - *(s2 + i));
 }
