@@ -132,7 +132,7 @@ shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element)
  */
 int sorted_insert(shash_table_t *ht, shash_node_t *element)
 {
-		shash_node_t *node = ht->shead, *prev;
+		shash_node_t *node = ht->shead;
 		int check = 0;
 
 		if (ht == NULL || element == NULL)
@@ -149,24 +149,24 @@ int sorted_insert(shash_table_t *ht, shash_node_t *element)
 		}
 
 		/* Insert in the middle */
-		while (node)
+		while (node->snext)
 		{
-			check = strcmp(element->key, node->key);
+			check = strcmp(element->key, node->snext->key);
 			if (check < 0)
 			{
-				element->snext = node;
-				element->sprev = node->sprev;
-				node->sprev = element;
+				element->snext = node->snext;
+				element->sprev = node;
+				node->snext->sprev = element;
+				node->snext = element;
 				return (1);
 			}
-			prev = node;
 			node = node->snext;
 		}
 
 		/* Insert at the end */
 		element->snext = NULL;
-		element->sprev = prev;
-		prev->snext = element;
+		element->sprev = node;
+		node->snext = element;
 		ht->stail = element;
 		return (1);
 }
