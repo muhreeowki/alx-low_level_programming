@@ -45,7 +45,6 @@ shash_table_t *shash_table_create(unsigned long int size)
  *
  * Return: 1 (success) 0 (faliure)
  */
-
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int hash = 0;
@@ -67,10 +66,23 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	/* run the hash function with the key */
 	hash = key_index((const unsigned char *)key, ht->size);
 	/* add the new element to the list */
-	ht->array[hash] = insert2(ht, hash, new_node);
+	ht->array[hash] = shash_insert(ht->array[hash], new_node);
+	/* add the new element to the ordered list */
+	if (ht->shead && ht->stail)
+	{
+		if (sorted_insert(ht, new_node) == 0)
+			return (0);
+	}
+	else 
+	{
+		ht->shead = new_node;
+		ht->stail = new_node;
+	}
 
 	return (1);
 }
+
+
 
 /**
  * insert - function that adds an element to a linked list
@@ -80,18 +92,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  *
  * Return: 1 (success) 0 (faliure)
  */
-
-shash_node_t *insert2(shash_table_t *ht, unsigned long int index, shash_node_t *element)
+shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element)
 {
-	shash_node_t *node, *head;
+	shash_node_t *node;
 
-	head = ht->array[index];
 	if (head == NULL)
-	{
-		if (index == 0)
-			ht->shead = head;
 		return (element);
-	}
 
 	/* Check if the key is already in the list */
 	node = head;
@@ -112,4 +118,189 @@ shash_node_t *insert2(shash_table_t *ht, unsigned long int index, shash_node_t *
 	head = element;
 
 	return (head);
+}
+
+
+
+/*
+ * sorted_insert - inserts a node into a sorted hash table
+ *
+ * @ht: hash table
+ * @element: node to insert
+ *
+ * Return: 1 (success) 0 (failure)
+ */
+int sorted_insert(shash_table_t *ht, shash_node_t *element)
+{
+		shash_node_t *node = ht->shead;
+
+		if (ht == NULL || element == NULL)
+			return (0);
+
+		/* Insert in the beginning */
+		if(node == NULL || strcmp(element->key, node->key) <= 0) 
+		{
+			element->sprev = NULL;
+			element->snext = node;
+			node->sprev = element;
+			ht->shead = element;
+			return (1);
+		}
+
+		/* Insert in the middle */
+		while(node->snext)
+		{
+			if (strcmp(element->key, node->snext->key) <= 0)
+			{
+				element->snext = node->snext;
+				element->sprev = node;
+				node->snext->sprev = element;
+				node->snext = element;
+				return (1);
+			}
+			node = node->snext;
+		}
+
+		/* Insert at the end */
+		element->snext = NULL;
+		element->sprev = node;
+		node->snext = element;
+		ht->stail = element;
+		return (1);
+}
+
+
+
+/**
+ * hash_table_get - function that retrieves a value associated with a key.
+ *
+ * @ht: hash table to add the value to
+ * @key: key to value
+ *
+ * Return: the value
+ */
+char *shash_table_get(const shash_table_t *ht, const char *key)
+{
+	unsigned long int index;
+	shash_node_t *node;
+
+	if (ht == NULL || key == NULL || *key == '\0')
+		return (NULL);
+
+	/* get the index */
+	index = key_index((const unsigned char *)key, ht->size);
+
+	/* search for the key */
+	node = ht->array[index];
+	while (node)
+	{
+		if (strcmp(node->key, (char *)key) == 0)
+			return (node->value);
+		node = node->next;
+	}
+
+	return (NULL);
+}
+
+
+
+/**
+ * hash_table_print - function that prints a hash table
+ *
+ * @ht: hash table to print
+ *
+ * Return: nothing
+ */
+void shash_table_print(const shash_table_t *ht)
+{
+	shash_node_t *node;
+	int printed = 0;
+
+	if (ht)
+	{
+		printf("{");
+		node = ht->shead;
+
+		while (node)
+		{
+			if (printed == 0)
+			{
+				printf("'%s': '%s'", node->key, node->value);
+				printed = 1;
+				node = node->snext;
+				continue;
+			}
+			printf(", '%s': '%s'", node->key, node->value);
+			node = node->snext;
+		}
+
+		printf("}\n");
+	}
+}
+
+
+
+/**
+ * hash_table_print - function that prints a hash table
+ *
+ * @ht: hash table to print
+ *
+ * Return: nothing
+ */
+void shash_table_print_rev(const shash_table_t *ht)
+{
+	shash_node_t *node;
+	int printed = 0;
+
+	if (ht)
+	{
+		printf("{");
+		node = ht->stail;
+
+		while (node)
+		{
+			if (printed == 0)
+			{
+				printf("'%s': '%s'", node->key, node->value);
+				printed = 1;
+				node = node->sprev;
+				continue;
+			}
+			printf(", '%s': '%s'", node->key, node->value);
+			node = node->sprev;
+		}
+
+		printf("}\n");
+	}
+}
+
+
+/**
+ * hash_table_delete - function that deletes a hash table
+ *
+ * @ht: hash table to delete
+ *
+ * Return: nothing
+ */
+
+void shash_table_delete(shash_table_t *ht)
+{
+	shash_node_t *node, *next;
+
+	if (ht)
+	{
+		node = ht->shead;
+
+		while (node)
+		{
+			next = node->snext;
+			free(node->key);
+			free(node->value);
+			free(node);
+			node = next;
+		}
+
+		free(ht->array);
+		free(ht);
+	}
 }
