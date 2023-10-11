@@ -37,7 +37,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 
 
 /**
- * hash_table_set - function that adds an element to the hash table
+ * shash_table_set - function that adds an element to the hash table
  *
  * @ht: hash table to add the value to
  * @key: key for the value
@@ -73,7 +73,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 		if (sorted_insert(ht, new_node) == 0)
 			return (0);
 	}
-	else 
+	else
 	{
 		ht->shead = new_node;
 		ht->stail = new_node;
@@ -85,12 +85,12 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 
 /**
- * insert - function that adds an element to a linked list
+ * shash_insert - function that adds an element to a linked list
  *
  * @head: head of the linked list
  * @element: value to add
  *
- * Return: 1 (success) 0 (faliure)
+ * Return: head
  */
 shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element)
 {
@@ -122,8 +122,8 @@ shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element)
 
 
 
-/*
- * sorted_insert - inserts a node into a sorted hash table
+/**
+ * sorted_insert - function to insert a node into a sorted linked list
  *
  * @ht: hash table
  * @element: node to insert
@@ -138,7 +138,7 @@ int sorted_insert(shash_table_t *ht, shash_node_t *element)
 			return (0);
 
 		/* Insert in the beginning */
-		if(node == NULL || strcmp(element->key, node->key) <= 0) 
+		if (node == NULL || strcmp(element->key, node->key) <= 0)
 		{
 			element->sprev = NULL;
 			element->snext = node;
@@ -148,7 +148,7 @@ int sorted_insert(shash_table_t *ht, shash_node_t *element)
 		}
 
 		/* Insert in the middle */
-		while(node->snext)
+		while (node->snext)
 		{
 			if (strcmp(element->key, node->snext->key) <= 0)
 			{
@@ -172,7 +172,7 @@ int sorted_insert(shash_table_t *ht, shash_node_t *element)
 
 
 /**
- * hash_table_get - function that retrieves a value associated with a key.
+ * shash_table_get - function that retrieves a value associated with a key.
  *
  * @ht: hash table to add the value to
  * @key: key to value
@@ -205,7 +205,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 
 
 /**
- * hash_table_print - function that prints a hash table
+ * shash_table_print - function that prints a hash table
  *
  * @ht: hash table to print
  *
@@ -241,7 +241,7 @@ void shash_table_print(const shash_table_t *ht)
 
 
 /**
- * hash_table_print - function that prints a hash table
+ * shash_table_print_rev - function that prints a hash table in reverse order
  *
  * @ht: hash table to print
  *
@@ -276,7 +276,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 
 /**
- * hash_table_delete - function that deletes a hash table
+ * shash_table_delete - function that deletes a hash table
  *
  * @ht: hash table to delete
  *
