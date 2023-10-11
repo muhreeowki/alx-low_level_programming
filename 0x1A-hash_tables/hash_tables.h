@@ -91,5 +91,6 @@ void shash_table_print_rev(const shash_table_t *ht);
 void shash_table_delete(shash_table_t *ht);
 shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element);
 int sorted_insert(shash_table_t *ht, shash_node_t *element);
+int replace_value(shash_node_t *existing, shash_node_t *new_node);
 
 #endif /* HASH_H */

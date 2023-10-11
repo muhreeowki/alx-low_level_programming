@@ -70,8 +70,13 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	/* add the new element to the ordered list */
 	if (ht->shead && ht->stail)
 	{
-		if (sorted_insert(ht, new_node) == 0)
-			return (0);
+		if (new_node->value == NULL)
+		{
+			free(new_node->key);
+			free(new_node);
+			return (1);
+		}
+		return (sorted_insert(ht, new_node));
 	}
 	else
 	{
@@ -96,9 +101,6 @@ shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element)
 {
 	shash_node_t *node;
 
-	if (head == NULL)
-		return (element);
-
 	/* Check if the key is already in the list */
 	node = head;
 	while (node)
@@ -107,17 +109,15 @@ shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element)
 		{
 			free(node->value);
 			node->value = element->value;
-			free(element->key);
-			free(element);
+			element->value = NULL;
 			return (head);
 		}
 		node = node->next;
 	}
-	/* if not prepend the element */
+	/* If element is not in the list prepend the element */
 	element->next = head;
-	head = element;
 
-	return (head);
+	return (element);
 }
 
 
@@ -132,13 +132,14 @@ shash_node_t *shash_insert(shash_node_t *head, shash_node_t *element)
  */
 int sorted_insert(shash_table_t *ht, shash_node_t *element)
 {
-		shash_node_t *node = ht->shead;
+		shash_node_t *node = ht->shead, *prev;
+		int check = 0;
 
 		if (ht == NULL || element == NULL)
 			return (0);
 
 		/* Insert in the beginning */
-		if (node == NULL || strcmp(element->key, node->key) <= 0)
+		if (node == NULL || strcmp(element->key, node->key) < 0)
 		{
 			element->sprev = NULL;
 			element->snext = node;
@@ -148,23 +149,24 @@ int sorted_insert(shash_table_t *ht, shash_node_t *element)
 		}
 
 		/* Insert in the middle */
-		while (node->snext)
+		while (node)
 		{
-			if (strcmp(element->key, node->snext->key) <= 0)
+			check = strcmp(element->key, node->key);
+			if (check < 0)
 			{
-				element->snext = node->snext;
-				element->sprev = node;
-				node->snext->sprev = element;
-				node->snext = element;
+				element->snext = node;
+				element->sprev = node->sprev;
+				node->sprev = element;
 				return (1);
 			}
+			prev = node;
 			node = node->snext;
 		}
 
 		/* Insert at the end */
 		element->snext = NULL;
-		element->sprev = node;
-		node->snext = element;
+		element->sprev = prev;
+		prev->snext = element;
 		ht->stail = element;
 		return (1);
 }
@@ -282,7 +284,6 @@ void shash_table_print_rev(const shash_table_t *ht)
  *
  * Return: nothing
  */
-
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *node, *next;
@@ -303,4 +304,23 @@ void shash_table_delete(shash_table_t *ht)
 		free(ht->array);
 		free(ht);
 	}
+}
+
+
+
+/**
+ * replace_value - replaces the value from one node to another
+ *
+ * @existing: node to replace the value
+ * @new_node: node to replace with
+ *
+ * Return: 1 (success)
+ */
+int replace_value(shash_node_t *existing, shash_node_t *new_node)
+{
+	free(existing->value);
+	existing->value = new_node->value;
+	free(new_node->key);
+	free(new_node);
+	return (1);
 }
