@@ -2,7 +2,7 @@
 #include <math.h>
 
 /**
- * binary_search: A function that searches for a value in a list of integers.
+ * binary_search - A function that searches for a value in a list of integers.
  *
  * @array: A pointer to an array of integers.
  * @size: The number of elements in the array.
